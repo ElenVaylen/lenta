@@ -1,0 +1,66 @@
+@import '../../styles/general/colors.scss';
+.recipes {
+  background-image: url('../images/recipes-bg.jpg');
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-size: 100% auto;
+  position: relative;
+  padding-top: 265px;
+  &:before {
+    background-image: url('../images/wave.png');
+    background-repeat: repeat-x;
+    background-position: 0 0;
+    content: '';
+    height: 10px;
+    width: 100%;
+    position: absolute;
+    top: -8px;
+    left: 0;
+  }
+  &-video {
+    position: absolute;
+    top: -615px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: -90px;
+    iframe {
+    }
+  }
+  &-menu {
+    margin-bottom: 100px;
+  }
+  &-grid {
+    padding-bottom: 80px;
+    &__item {
+      width: 33.33%;
+      &-wrap {
+        padding: 38px;
+      }
+      &-left {
+        width: 210px;
+        img {
+          width: 100%;
+        }
+      }
+      &-right {
+        padding-left: 30px;
+      }
+      &-title {
+        font-size: 31px;
+        text-decoration: underline;
+        color: $color-yellow;
+        margin: 0 0 20px 0;
+        line-height: 1.25;
+        font-weight: normal;
+      }
+      &-text {
+        font-size: 21px;
+        color: #fff;
+        font-family: 'DIN Pro Cond';
+        line-height: 1.25;
+        margin: 0;
+        font-weight: normal;
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+@import './general/normalize';
+@import './general/colors';
+@import './general/fonts';
+@import './general/base';
+@import '../../node_modules/slick-carousel/slick/slick';
+@import './../sections/header/header';
+@import './../sections/start/start';
+@import './../sections/middle-menu/middle-menu';
+@import './../sections/knives/knives';
+@import './../sections/recipes/recipes';

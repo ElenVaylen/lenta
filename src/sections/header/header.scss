@@ -1,0 +1,48 @@
+@import '../../styles/general/colors.scss';
+
+.header {
+  display: block;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  &__wrap {
+    position: relative;
+    background-color: $color-blue;
+  }
+  &__container {
+    &-content {
+      height: 78px;
+    }
+  }
+}
+.logo {
+  display: block;
+}
+.menu {
+  &__item {
+    margin: 0 20px;
+  }
+  &__link {
+    color: #fff;
+    font-size: 28px;
+    text-decoration: none;
+    &.active, &:hover {
+      color: $color-yellow;
+    }
+  }
+}
+.cities {
+  &__title {
+    cursor: pointer;
+    text-decoration: none;
+    color: #fff;
+    font-size: 28px;
+    padding-left: 2px;
+    padding-right: 2px;
+    &:hover {
+      color: $color-yellow;
+    }
+  }
+}

@@ -1,0 +1,23 @@
+mixin recipes-grid-item(title, text, img)
+  .recipes-grid__item
+    .recipes-grid__item-wrap.flex
+      .recipes-grid__item-left.col-auto
+        .recipes-grid__item-img
+          img(src=`./images/${img}`, alt="title")
+      .recipes-grid__item-right.col
+        h3.recipes-grid__item-title= title
+        p.recipes-grid__item-text= text
+      a.recipes-grid__item-link(href="#")
+
+section.recipes
+  .container
+    .recipes-video.flex.justify-content-center
+      <iframe width="1100" height="615" src="https://www.youtube.com/embed/NWkL_R_r6aw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    .recipes-menu
+      .recipes-menu__list.flex.align-items-center.justify-content-center
+        a.menu-dotted.dotted2(href='') Условия акции
+        a.menu-dotted.dotted2(href='') Скачать буклет
+    h2.section-title.section-title__white Рецепты от Джейми
+    .recipes-grid.flex
+      +recipes-grid-item('«Павлова» с летними ягодами', 'Этот летний десерт с горкой свежих ягод точно станет гвоздем программы. А если вы решите приготовить его в другое время года возьмите фрукты — например, отлично подойдут припущенные груши.', 'recipes-item1.jpg')
+

@@ -1,0 +1,192 @@
+@import '../../styles/general/colors.scss';
+
+.start {
+  position: relative;
+  z-index: 1;
+  &__wrap {
+    position: relative;
+    background-image: url('../images/main-bg.jpg');
+    background-repeat: no-repeat;
+    background-position: top center;
+    margin-top: 78px;
+    background-size: cover;
+  }
+  &__discount {
+    position: absolute;
+    right: 180px;
+    top: 83px;
+    svg {
+      width: 270px;
+      height: 270px;
+    }
+  }
+  &__info {
+    width: 370px;
+    position: relative;
+    margin-left: 180px;
+  }
+  &__logo {
+    position: relative;
+    z-index: 5;
+    svg {
+      width: 370px;
+      height: 269px;
+    }
+  }
+  &__cook {
+    position: relative;
+    background-image: url('../images/cook.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    margin-top: -9px;
+    padding: 0 48px;
+    &-title {
+      color: #fff;
+      text-transform: uppercase;
+      font-size: 46px;
+      margin: 0;
+      padding: 50px 0px 40px 0;
+      font-weight: normal;
+    }
+    &-collection {
+      position: relative;
+    }
+    &-text {
+      color: $color-blue-light;
+      font-size: 36px;
+      text-transform: uppercase;
+      margin: 0 0 40px 0;
+      font-weight: normal;
+    }
+    &-date {
+      color: $color-text;
+      font-size: 31px;
+      margin: 0;
+      padding-bottom: 50px;
+    }
+    &-img {
+      position: absolute;
+      top: -91px;
+      right: -82px;
+    }
+  }
+  &__collect {
+    padding: 0 48px;
+    position: relative;
+    background-color: #fff;
+    z-index: 5;
+    padding-top: 50px;
+    &:before {
+      content:'';
+      background-image: url('../images/border-check.png');
+      background-repeat: repeat-x;
+      background-position: top left;
+      position: absolute;
+      top: -12px;
+      left: 0;
+      width: 100%;
+      height: 12px;
+    }
+    .arrow {
+      position: absolute;
+      top: 40px;
+      right: 0;
+      transform: translateX(50%);
+    }
+    &-title {
+      color: $color-red;
+      text-transform: uppercase;
+      font-size: 46px;
+      margin: 0;
+      padding-bottom: 60px;
+      font-weight: normal;
+    }
+    &-subtitle {
+      color: $color-blue-light;
+      text-transform: uppercase;
+      font-size: 46px;
+      margin: 0;
+      padding-bottom: 10px;
+      font-weight: normal;
+    }
+    &-text {
+      font-size: 21px;
+      color: $color-text;
+      margin: 0;
+      font-weight: normal;
+      font-family: 'DIN Pro Cond';
+      line-height: 1.25;
+      span {
+        color: $color-red;
+        display: block;
+        text-transform: uppercase;
+      }
+    }
+    &-content {
+      padding-bottom: 55px;
+      &:last-child {
+        padding-bottom: 100px;
+      }
+    }
+  }
+  &__letter {
+    position: absolute;
+    bottom: 40px;
+    right: 180px;
+    width: 1000px;
+    &-title {
+      color: $color-blue-light;
+      text-transform: uppercase;
+      font-size: 46px;
+      margin: 0;
+      padding-bottom: 40px;
+      font-weight: normal;
+      padding-left: 80px;
+    }
+    &-container {
+      padding: 65px 70px;
+      box-shadow: inset 2px 2px 3px 0px rgba(36, 34, 35, 0.3);
+      background-color: rgba(50, 51, 51, 0.04);
+    }
+    &-write {
+      width: 59%;
+    }
+    &-text {
+      margin: 0 0 25px 0;
+      font-weight: normal;
+      font-family: 'DIN Pro Cond';
+      line-height: 1.25;
+      font-size: 21px;
+      color: $color-text;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+    &-sign {
+      padding-top: 30px;
+      width: 75%;
+      svg {
+        width: 167px;
+        height: 73px;
+      }
+    }
+    &-img {
+      position: absolute;
+      bottom: 38px;
+      right: 72px;
+      box-shadow: 0px 9px 10px 0px rgba(89, 89, 89, 0.13);
+      border: 10px solid #fff;
+      width: 295px;
+      height: 295px;
+      overflow: hidden;
+      transform: rotate(10deg);
+      img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+      }
+    }
+  }
+}

@@ -1,0 +1,59 @@
+mixin knives-item(name, img, text, sale, price, oldprice, chip)
+  .knives-item
+    .knives-item__wrap
+      .knives-item__sale
+        if sale = '83'
+          include ../../images/discount-01.svg
+      .knives-item__img
+        img(src=`./images/${img}`, alt="")
+      .knives-item__content.flex
+        .knives-item__price.col-auto
+          p.knives-item__actual= price
+            img(src="./images/rub.png", alt="")
+          p.knives-item__chip= chip
+          p.knives-item__old
+            span= oldprice
+            img(src="./images/rub.png", alt="")
+        .knives-item__preview.col
+          p.knives-item__title= name
+          p.knives-item__text= text
+
+mixin knives-dotted-item(img)
+  .knives-dotted__item
+    .knives-dotted__item-wrap
+      img(src=`./images/${img}`, alt="")
+
+
+section.knives
+  .container
+    h2.section-title Коллекция ножей 
+    .knives-dotted
+      +knives-dotted-item('knife-item-dotted.jpg')
+      +knives-dotted-item('knife-item-dotted.jpg')
+      +knives-dotted-item('knife-item-dotted.jpg')
+      +knives-dotted-item('knife-item-dotted.jpg')
+      +knives-dotted-item('knife-item-dotted.jpg')
+      +knives-dotted-item('knife-item-dotted.jpg')
+      +knives-dotted-item('knife-item-dotted.jpg')
+      +knives-dotted-item('knife-item-dotted.jpg')
+      +knives-dotted-item('knife-item-dotted.jpg')
+      +knives-dotted-item('knife-item-dotted.jpg')
+      +knives-dotted-item('knife-item-dotted.jpg')
+    .knives-slider
+      +knives-item('Нож разделочный, 20 см', 'knife-item.jpg', 'Этот нож идеален, если вам нужно нарезать продукт ровными слайсами. Широкое лезвие с выемкой убережет от прилипания к металлу тонких ломтиков сырого мяса или рыбы.', '81', '699', '4199', '+8 фишек')
+      +knives-item('Нож разделочный, 20 см', 'knife-item1.jpg', 'Этот нож идеален, если вам нужно нарезать продукт ровными слайсами. Широкое лезвие с выемкой убережет от прилипания к металлу тонких ломтиков сырого мяса или рыбы.', '83', '699', '4199', '+8 фишек')
+      +knives-item('Нож разделочный, 20 см', 'knife-item.jpg', 'Этот нож идеален, если вам нужно нарезать продукт ровными слайсами. Широкое лезвие с выемкой убережет от прилипания к металлу тонких ломтиков сырого мяса или рыбы.', '81', '699', '4199', '+8 фишек')
+      +knives-item('Нож разделочный, 20 см', 'knife-item.jpg', 'Этот нож идеален, если вам нужно нарезать продукт ровными слайсами. Широкое лезвие с выемкой убережет от прилипания к металлу тонких ломтиков сырого мяса или рыбы.', '81', '699', '4199', '+8 фишек')
+      +knives-item('Нож разделочный, 20 см', 'knife-item.jpg', 'Этот нож идеален, если вам нужно нарезать продукт ровными слайсами. Широкое лезвие с выемкой убережет от прилипания к металлу тонких ломтиков сырого мяса или рыбы.', '81', '699', '4199', '+8 фишек')
+      +knives-item('Нож разделочный, 20 см', 'knife-item.jpg', 'Этот нож идеален, если вам нужно нарезать продукт ровными слайсами. Широкое лезвие с выемкой убережет от прилипания к металлу тонких ломтиков сырого мяса или рыбы.', '81', '699', '4199', '+8 фишек')
+      +knives-item('Нож разделочный, 20 см', 'knife-item.jpg', 'Этот нож идеален, если вам нужно нарезать продукт ровными слайсами. Широкое лезвие с выемкой убережет от прилипания к металлу тонких ломтиков сырого мяса или рыбы.', '81', '699', '4199', '+8 фишек')
+      +knives-item('Нож разделочный, 20 см', 'knife-item.jpg', 'Этот нож идеален, если вам нужно нарезать продукт ровными слайсами. Широкое лезвие с выемкой убережет от прилипания к металлу тонких ломтиков сырого мяса или рыбы.', '81', '699', '4199', '+8 фишек')
+      +knives-item('Нож разделочный, 20 см', 'knife-item.jpg', 'Этот нож идеален, если вам нужно нарезать продукт ровными слайсами. Широкое лезвие с выемкой убережет от прилипания к металлу тонких ломтиков сырого мяса или рыбы.', '81', '699', '4199', '+8 фишек')
+      +knives-item('Нож разделочный, 20 см', 'knife-item.jpg', 'Этот нож идеален, если вам нужно нарезать продукт ровными слайсами. Широкое лезвие с выемкой убережет от прилипания к металлу тонких ломтиков сырого мяса или рыбы.', '81', '699', '4199', '+8 фишек')
+      +knives-item('Нож разделочный, 20 см', 'knife-item.jpg', 'Этот нож идеален, если вам нужно нарезать продукт ровными слайсами. Широкое лезвие с выемкой убережет от прилипания к металлу тонких ломтиков сырого мяса или рыбы.', '81', '699', '4199', '+8 фишек')
+    .knives-slider__arrows.flex.align-items-center.justify-content-center
+      .arrow.arrow-left
+        include ../../images/arrow-down.svg
+      .arrow.arrow-right
+        include ../../images/arrow-down.svg
+      

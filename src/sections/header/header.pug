@@ -1,0 +1,24 @@
+mixin menu-item(title)
+  .menu__item
+    a.menu__link(href="#")= title
+
+header.header
+  .header__wrap
+    .header__container.container
+      .header__container-content.flex.justify-content-between.align-items-center
+        a.logo.svg-wrap(href="/")
+          include ../../images/logo.svg
+        .nav.menu
+          .menu__wrap
+            .menu__list.flex
+              .menu__close.close
+                .close-line
+                .close-line
+              +menu-item('Главная')
+              +menu-item('Правила')
+              +menu-item('Коллекция ножей')
+              +menu-item('Рецепты')
+              +menu-item('Смотреть видео')
+              +menu-item('Скачать буклет')
+        .cities
+          .cities__title.dotted Москва

@@ -1,0 +1,140 @@
+.knives {
+  padding-top: 80px;
+  position: relative;
+  background-image: url('../images/knives-bg.jpg');
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  background-size: 100% auto;
+  padding-bottom: 430px;
+  &-slider {
+    max-width: 1800px;
+    margin: 0 auto 80px auto;
+    &__arrows {
+      margin-bottom: 100px;
+      .arrow-right {
+        margin-left: 26px;
+      }
+    }
+    .slick-slide {
+      padding: 50px 0;
+      &.slick-center {
+        transform: scale(1.3);
+      }
+    }
+  }
+  &-dotted {
+    max-width: 1100px;
+    margin: 0 auto 80px auto;
+    &__item {
+      &-wrap {
+        border-radius: 10px;
+        box-shadow: inset 1px 1px 2px 0px rgba(49, 46, 47, 0.38);
+        margin: 0 5px;
+        overflow: hidden;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #fbfcfc;
+        cursor: pointer;
+      }
+      img {
+        margin: auto;
+        display: block;
+      }
+    }
+  }
+  &-item {
+    position: relative;
+    &__wrap {
+      width: 424px;
+      margin: auto;
+      position: relative;
+      margin: 0 70px;
+    }
+    &__sale {
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 2;
+      svg {
+        width: 100px;
+        height: 100px;
+        filter: grayscale(100%) opacity(60%);
+        .slick-center & {
+          filter: grayscale(0%) opacity(100%);
+        }
+      }
+    }
+    &__content {
+      margin-top: 35px;
+    }
+    &__price {
+      background-color:  $color-grey;
+      width: 86px;
+      color: #fff;
+      text-align: center;
+      padding: 5px 0;
+      .slick-center & {
+        background-color: $color-red;
+      }
+    }
+    &__actual {
+      font-size: 30px;
+      margin: 0;
+      img {
+        display: inline !important;
+        padding-left: 5px;
+        width: 12px;
+      }
+    }
+    &__chip {
+      font-size: 15px;
+      margin: 0;
+    }
+    &__old {
+      font-size: 23px;
+      margin: 5px 0 0 0;
+      span {
+        text-decoration: line-through;
+      }
+      img {
+        display: inline !important;
+        padding-left: 5px;
+        width: 10px;
+      }
+    }
+    &__img {
+      filter: grayscale(100%);
+      .slick-center & {
+        filter: grayscale(0%);
+      }
+      img {
+        max-width: 100%;
+      }
+    }
+    &__preview {
+      padding-left: 28px;
+    }
+    &__title {
+      color: $color-grey;
+      font-size: 21px;
+      margin: 0 0 15px 0;
+      font-weight: normal;
+      .slick-center & {
+        color: $color-text;
+      }
+    }
+    &__text {
+      color: $color-grey;
+      font-size: 14px;
+      margin: 0;
+      font-weight: normal;
+      font-family: 'DIN Pro Cond';
+      line-height: 1.25;
+      .slick-center & {
+        color: $color-text;
+      }
+    }
+  }
+}

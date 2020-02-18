@@ -1,0 +1,27 @@
+@import '../../styles/general/colors.scss';
+
+.middle-menu {
+  background-image: url('../images/middle-menu-bg.png');
+  background-position: center center;
+  background-repeat: repeat-x;
+  z-index: 3;
+  position: relative;
+  &__row {
+    max-width: 1320px;
+    margin: auto;
+    position: relative;
+    height: 171px;
+  }
+  &__discount {
+    position: absolute;
+    top: -32px;
+    left: 14px;
+    svg {
+      width: 225px;
+      height: 225px;
+    }
+  }
+  &__item {
+    margin: 0 80px;
+  }
+}
