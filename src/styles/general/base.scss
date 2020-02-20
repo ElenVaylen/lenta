@@ -3,6 +3,7 @@
 .body {
   font-family: 'DINCondensed';
   line-height: 1;
+  letter-spacing: 0.25px;
 }
 .wrapper {
   max-width: 1920px;
@@ -124,4 +125,12 @@
   &:hover {
     color: $color-yellow;
   }
+}
+.button-to-top {
+  color: #fff;
+  font-size: 31px;
+  font-weight: normal;
+  border-bottom: 2px solid #fff;
+  cursor: pointer;
+  text-transform: uppercase;
 }
