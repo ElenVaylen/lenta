@@ -15,7 +15,7 @@ $(document).ready(function() {
   });
   $('.knives-dotted').slick({
     infinite: true,
-    slidesToShow: 11,
+    slidesToShow: 9,
     slidesToScroll: 1,
     arrows: false,
     cssEase: 'linear',
@@ -28,5 +28,15 @@ $(document).ready(function() {
   });
   $('.knives-slider__arrows .arrow-right').click(function(){
     $('.knives-slider').slick('slickNext');
+  });
+  $('.map-market__hyper').addClass('map-market__active dotted3');
+  $('.map-market__link').click(function(e) {
+    e.preventDefault();
+    if (!$(this).hasClass('map-market__active')) {
+      $('.map-market__link:not(map-market__active)').removeClass('map-market__active dotted3');
+      $(this).addClass('map-market__active dotted3');
+    } else {
+      return false;
+    }
   });
 });

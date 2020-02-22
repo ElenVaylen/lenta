@@ -19,10 +19,12 @@
 }
 .logo {
   display: block;
+  margin-left: -22px;
 }
 .menu {
   &__item {
     margin: 0 20px;
+    letter-spacing: 2px;
   }
   &__link {
     color: #fff;

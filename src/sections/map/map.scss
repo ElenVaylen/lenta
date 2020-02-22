@@ -1,0 +1,51 @@
+.map {
+  position: relative;
+  z-index: 2;
+  &:before {
+    background-image: url('../images/wave-bot.png');
+    background-repeat: repeat-x;
+    background-position: 0 0;
+    content: '';
+    height: 10px;
+    width: 100%;
+    position: absolute;
+    top: -1px;
+    left: 0;
+  }
+  &-top {
+    color: #fff;
+    position: absolute;
+    top: -75px;
+    width: 100%;
+    left: 0;
+    font-size: 31px;
+    letter-spacing: 2px;
+    line-height: 1.2;
+  }
+  &-market {
+    &__link {
+      color: #fff;
+      text-decoration: none;
+      display: inline-block;
+      &:hover {
+        color: $color-yellow;
+      }
+    }
+    &__active {
+      color: $color-yellow;
+    }
+  }
+  &-city {
+    &__link {
+      color: $color-yellow;
+      text-decoration: none;
+      display: inline-block;
+    }
+  }
+  &-platform {
+    img {
+      width: 100%;
+      display: block;
+    }
+  }
+}

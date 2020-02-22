@@ -1,0 +1,61 @@
+.footer {
+  position: relative;
+  background: #fff;
+  &__wrap {
+    position: relative;
+  }
+  &__list {
+    padding-right: 192px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+  }
+  &__logo {
+    position: relative;
+    margin-left: -22px;
+    &:before {
+      content: '';
+      background-color: $color-blue;
+      height: 50px;
+      width: 300px;
+      position: absolute;
+      top: 0;
+      right: 98%;
+    }
+    svg {
+      position: relative;
+      z-index: 1;
+    }
+  }
+  &__logo-jamie {
+    position: absolute;
+    top: 0;
+    right: 0;
+    svg {
+      width: 146px;
+      height: 106px;
+    }
+  }
+  &__text {
+    font-size: 16px;
+    color: #000000;
+    font-family: 'DIN Pro';
+    padding: 0 50px;
+    padding: 0 55px;
+    font-weight: 300;
+    p {
+      margin: 0;
+    }
+  }
+  &__phone {
+    &-item {
+      font-size: 31px;
+      color: $color-blue;
+      border-bottom: 1px solid $color-blue;
+      text-decoration: none;
+      &:hover {
+        color: $color-yellow;
+        border-color: $color-yellow;
+      }
+    }
+  }
+}

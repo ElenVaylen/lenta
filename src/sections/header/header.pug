@@ -1,10 +1,15 @@
-mixin menu-item(title)
+block variables
+
+mixin menu-item(title, link)
   .menu__item
-    a.menu__link(href="#")= title
+    if main === true
+      a.menu__link(href=link)= title
+    else
+      a.menu__link(href=`/${link}`)= title
 
 header.header
   .header__wrap
-    .header__container.container
+    .header__container.container-big
       .header__container-content.flex.justify-content-between.align-items-center
         a.logo.svg-wrap(href="/")
           include ../../images/logo.svg
@@ -14,11 +19,11 @@ header.header
               .menu__close.close
                 .close-line
                 .close-line
-              +menu-item('Главная')
-              +menu-item('Правила')
-              +menu-item('Коллекция ножей')
-              +menu-item('Рецепты')
-              +menu-item('Смотреть видео')
-              +menu-item('Скачать буклет')
+              +menu-item('Главная', '#start')
+              +menu-item('Правила', '#rules')
+              +menu-item('Коллекция ножей', '#knives')
+              +menu-item('Рецепты', '#recipes')
+              +menu-item('Смотреть видео', '#video')
+              +menu-item('Скачать буклет', '#booklet')
         .cities
           .cities__title.dotted Москва
