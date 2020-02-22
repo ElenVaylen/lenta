@@ -1,5 +1,9 @@
 @import './colors.scss';
 
+*, ::after, ::before {
+  box-sizing: border-box;
+}
+
 .body {
   font-family: 'DINCondensed';
   line-height: 1;
@@ -62,10 +66,16 @@
 .align-items-start {
   align-items: flex-start;
 }
+.align-items-end {
+  align-items: flex-end;
+}
 .svg-wrap {
   svg {
     display: block;
   }
+}
+.font-din-pro {
+  font-family: 'DIN Pro Cond';
 }
 .dotted {
   position: relative;

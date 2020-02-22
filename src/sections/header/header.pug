@@ -5,7 +5,7 @@ mixin menu-item(title, link)
     if main === true
       a.menu__link(href=link)= title
     else
-      a.menu__link(href=`/${link}`)= title
+      a.menu__link(href=`./${link}`)= title
 
 header.header
   .header__wrap

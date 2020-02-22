@@ -1,0 +1,191 @@
+.recipe-inner {
+  background-image: url('../images/pattern.jpg');
+  background-position: 0 0;
+  position: relative;
+  padding-top: 120px;
+  padding-bottom: 90px;
+  &:before {
+    background-image: url('../images/wave.png');
+    background-repeat: repeat-x;
+    background-position: 0 0;
+    content: '';
+    height: 10px;
+    width: 100%;
+    position: absolute;
+    top: -8px;
+    left: 0;
+  }
+}
+.navigation {
+  margin-bottom: 90px;
+  font-size: 31px;
+  letter-spacing: 2px;
+  &__center {
+    margin: 0 95px;
+  }
+  &__main {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 55px;
+    &:hover {
+      color: $color-yellow;
+    }
+  }
+  &__links {
+    color: $color-blue-lighter;
+    text-decoration: none;
+    width: 400px;
+    &:hover {
+      color: $color-yellow;
+    }
+    &-left {
+      text-align: right;
+    }
+    &-right {
+
+    }
+  }
+}
+.recipe-info {
+  color: #fff;
+  font-size: 21px;
+  margin-bottom: 50px;
+  &__img {
+    width: 475px;
+    img {
+      width: 100%;
+      display: block;
+    }
+  }
+  &__content {
+    padding-left: 110px;
+  }
+  &__title {
+    font-size: 46px;
+    font-weight: normal;
+    margin: 0 0 20px 0;
+  }
+  &__text {
+    font-family: 'DIN Pro Cond';
+    margin: 0 0 35px 0;
+    line-height: 1.25;
+  }
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+    border: none;
+    border-spacing: unset;
+    text-align: center;
+    td {
+      border: 1px solid #fff;
+    }
+    thead td {
+      padding: 12px 10px;
+      font-weight: normal;
+      font-family: 'DIN Pro Cond';
+    }
+    tbody td {
+      padding: 25px 10px;
+      font-weight: normal;
+      background-color: #04a0d6;
+    }
+  }
+}
+.recipe-detail {
+  color: #fff;
+  font-size: 24px;
+  &__top {
+    position: relative;
+    padding-bottom: 18px;
+    margin-bottom: 45px;
+    &:after {
+      content: '';
+      background-image: url('../images/dot2.png');
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+    }
+  }
+  &__title {
+    color: #fff;
+    font-size: 46px;
+    margin: 0;
+    text-transform: uppercase;
+    font-weight: normal;
+  }
+  &__link {
+    color: #fff;
+    font-size: 31px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    &:hover {
+      color: $color-yellow;
+    }
+  }
+  &__grid {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -40px;
+    margin-right: -40px;
+    padding-bottom: 60px;
+    position: relative;
+    margin-bottom: 75px;
+    &:after {
+      content: '';
+      background-image: url('../images/dot2.png');
+      position: absolute;
+      bottom: 0;
+      left: 40px;
+      right: 40px;
+      height: 3px;
+    }
+  }
+  &__col {
+    width: 33.33%;
+    padding-left: 40px;
+    padding-right: 40px;
+    &-subtitle {
+      color: #fff;
+      font-weight: normal;
+      font-size: 31px;
+      margin: 0 0 35px 0;
+      .recipe-detail__cooking & {
+        margin-bottom: 5px;
+      }
+    }
+    &-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 5px;
+    }
+    &-text {
+      margin: 0;
+      font-family: 'DIN Pro Cond';
+      line-height: 1.25;
+      display: inline;
+    }
+    &-between {
+      display: inline;
+      flex: 1 0 auto;
+      background-image: url('../images/dot-min.png');
+      background-position: 0 90%;
+      background-repeat: repeat-x;
+      height: 3px;
+    }
+    &-step {
+      margin-bottom: 35px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+    &-desc {
+      margin: 0;
+      font-family: 'DIN Pro Cond';
+      line-height: 1.25;
+    }
+  }
+}
