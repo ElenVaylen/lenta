@@ -16,14 +16,15 @@ let getCyties = async () => {
     const response = await fetch(url, {
       method: 'GET',
       headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
+        'Access-Control-Allow-Origin':'*'
       },
-      credentials: 'same-origin',
-      mode: 'no-cors'
+      mode: 'cors',
+      credentials: 'same-origin'
     });
+    console.log(response);
     if (response.ok) {
       myJson = await response.json();
+      console.log(myJson);
     }
     console.log('Успех:', JSON.stringify(myJson));
   } catch (error) {
