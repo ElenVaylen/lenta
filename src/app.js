@@ -1,39 +1,54 @@
 import $ from 'jquery';
 window.$ = window.jQuery = $;
 import 'slick-carousel';
+import cities from '../cities.json'
+import map from '../map.json'
 
-let getCyties = async () => {
-  // const response =await fetch('https://lenta.com/api/v1/cities', {mode: 'cors'}, {headers: {'Content-Type': 'application/json'}});
-  // let myJson;
-  // if (response.ok) {
-  //   myJson = await response.json();
-  // }
-  // console.log(myJson);
-  // console.log(JSON.stringify(myJson));
+// console.log({cities, map})
 
-  const url = 'https://lenta.com/api/v1/cities';
-  try {
-    const response = await fetch(url, {
-      method: 'GET',
-      headers: {
-        'Access-Control-Allow-Origin':'*'
-      },
-      mode: 'cors',
-      credentials: 'same-origin'
-    });
-    console.log(response);
-    if (response.ok) {
-      myJson = await response.json();
-      console.log(myJson);
-    }
-    console.log('Успех:', JSON.stringify(myJson));
-  } catch (error) {
-    console.error('Ошибка:', error);
-  }
-}
-getCyties();
+// let getCyties = async () => {
+//   const url = 'https://lenta.com/api/v1/cities';
+//   try {
+//     const response = await fetch(url, {
+//       method: 'GET',
+//       headers: {
+//         'Access-Control-Allow-Origin':'*'
+//       },
+//       mode: 'cors',
+//       credentials: 'same-origin'
+//     });
+//     console.log(response);
+//     if (response.ok) {
+//       myJson = await response.json();
+//       console.log(myJson);
+//     }
+//     console.log('Успех:', JSON.stringify(myJson));
+//   } catch (error) {
+//     console.error('Ошибка:', error);
+//   }
+// }
+// getCyties();
 
 $(document).ready(function() {
+  let modalCity = $('.map-modal__list');
+  cities.map(item => {
+    modalCity.append(`<div class="map-modal__item">
+    <a class="map-modal__link" href="" id="${item.id}" data-lat="${item.lat}" data-long="${item.long}" 
+    data-mediumStoreConcentration="${item.mediumStoreConcentration}" 
+    data-highStoreConcentration="${item.highStoreConcentration}">
+    ${item.name}</a>
+    </div>`);
+  });
+  $(".map-modal__link").on("click", function (event) {
+    event.preventDefault();
+    let text = $(this).text();
+    $('.body').removeClass('map-modal__open');
+    $('.choise-city').text(text);
+  });
+  $('.choise-city').click(function(event){
+    event.preventDefault();
+    $('.body').addClass('map-modal__open');
+  });
   
   $('.menu-bar__wrap').click(function(){
     if($('.body').hasClass('menu-open')) {
@@ -51,10 +66,6 @@ $(document).ready(function() {
       $('.body.menu-open').removeClass('menu-open');
       $('.overflow.active').removeClass('active');
 		}
-  });
-
-  $('.choise-city').click(function(){
-    $('.body').addClass('map-modal__open');
   });
 
   $('.knives-slider').slick({

@@ -2,7 +2,8 @@ mixin link(link_title, link)
   a(href=link).recipe-detail__link= link_title
 
 mixin title(title, text)
-  h2.recipe-info__title= title 
+  h2.recipe-info__title= title
+    | ,
     <br>
     = text
 
@@ -26,23 +27,23 @@ section.recipe-inner#recipe-inner
   .navigation
     .container
       .navigation__list.flex.justify-content-center.align-items-center
-        a(href="#").navigation__links.navigation__links-left Хрустящий зимний салат
+        a(href=leftRecipe).navigation__links.navigation__links-left= leftRecipeTitle
         .navigation__center.flex.align-items-center
-          .arrow.arrow-left
+          a(href=leftRecipe).arrow.arrow-left
             include ../../images/arrow-down.svg
           a(href="/").navigation__main.dotted2 На главную
-          .arrow.arrow-right
+          a(href=rightRecipe).arrow.arrow-right
             include ../../images/arrow-down.svg
-        a(href="#").navigation__links.navigation__links-right Быстрые блины
+        a(href=rightRecipe).navigation__links.navigation__links-right= rightRecipeTitle
   .recipe-info
     .container
       .recipe-info__wrap.flex
         .recipe-info__img.col-auto
-          +title('«Павлова» с летними ягодами,', '10 порций, 1 ч. 25 мин.')
-          img(src="./images/recipes-item1.jpg", alt="")
+          +title(title, howMuch)
+          img(src=`./images/${imgPage}`, alt="")
         .recipe-info__content.col
-          +title('«Павлова» с летними ягодами,', '10 порций, 1 ч. 25 мин.')
-          p.recipe-info__text Этот летний десерт с горкой свежих ягод точно станет гвоздем программы. А если вы решите приготовить его в другое время года, возьмите фрукты – например, отлично подойдут припущенные груши.
+          +title(title, howMuch)
+          p.recipe-info__text= desc
           table.recipe-info__table
             thead
               tr
@@ -54,51 +55,43 @@ section.recipe-inner#recipe-inner
                 td Клетчатка
             tbody
               tr
-                td 261
-                td 4,1 г.
-                td 10,9 г./6,7 г.
-                td 62,7 г.
-                td 38,8 г./0,4 г.
-                td 0,8 г.
+                td= kkal
+                td= protein
+                td= fat
+                td= carbs
+                td= sugar
+                td= cellulose
   .recipe-detail
     .container
       .recipe-detail__top
         h3.recipe-detail__title Что понадобится
       .recipe-detail__grid.recipe-detail__components
-        +link('Распечатать рецепт', '#')
+        +link('Распечатать рецепт', printRecipeLink)
         .recipe-detail__col
           +subtitle('МЕРЕНГА')
-          +recipe-detail__col-row('01. Белки крупных яиц, желательно деревенских', '300 г.')
-          +recipe-detail__col-row('02. Мелкий сахар', '6 шт.')
+          each val in components1
+            +recipe-detail__col-row(val.name, val.amount)
         .recipe-detail__col
           +subtitle('НАЧИНКА')
-          +recipe-detail__col-row('03. Клубника', '200 г.')
-          +recipe-detail__col-row('04. Малина', '200 г.')
-          +recipe-detail__col-row('05. Жирные сливки', '200 мл.')
-          +recipe-detail__col-row('06. Обезжиренный натуральный йогурт', '200 г.')
+          each val in components2
+            +recipe-detail__col-row(val.name, val.amount)
         .recipe-detail__col
           +subtitle('')
-          +recipe-detail__col-row('07. Мелкий сахар', '2 ст. л.')
-          +recipe-detail__col-row('08. Стручок ванили', '1шт.')
-          +recipe-detail__col-row('09. Несколько веточек мяты ')
+          each val in components3
+            +recipe-detail__col-row(val.name, val.amount)
       .recipe-detail__top
         h3.recipe-detail__title Как готовить
       .recipe-detail__grid.recipe-detail__cooking
-        +link('Скачать рецепт', '#')
+        +link('Скачать рецепт', downRecipeLink)
         .recipe-detail__col
-          +step('ШАГ 01', 'Разогрейте духовку до 150 °C.')
-          +step('ШАГ 02', 'Для меренги взбейте белки со щепоткой морской соли в настольном миксере до крепких пиков. Не выключая миксер, постепенно всыпьте сахар.')
-          +step('ШАГ 03', 'Включите миксер на максимальную скорость и взбивайте 8 минут, пока сахар полностью не растворится. Если в массе все еще чувствуются крупинки сахара, взбивайте еще минуту, но следите, чтобы меренга не опала.')
-          +step('ШАГ 03', 'Включите миксер на максимальную скорость и взбивайте 8 минут, пока сахар полностью не растворится. Если в массе все еще чувствуются крупинки сахара, взбивайте еще минуту, но следите, чтобы меренга не опала.')
+          each val in cooking1
+            +step(val.name, val.amount)
         .recipe-detail__col
-          +step('ШАГ 04', 'Выстелите два противня бумагой для выпечки, разделите между ними поровну меренгу и сформуйте из каждой половины круг диаметром примерно 20 см.')
-          +step('ШАГ 05', 'Выпекайте 1 час, чтобы меренга получилась слегка золотистой, но пышной внутри.')
-          +step('ШАГ 06', 'Удалите хвостики клубники, крупные ягоды разрежьте на 2 или 4 части. Смешайте клубнику и малину.')
-          +step('ШАГ 07', 'Взбейте сливки с сахаром до мягких пиков, затем добавьте йогурт. Разрежьте вдоль стручок ванили, выскребите семена и добавьте в сливочный крем. ')
+          each val in cooking2
+            +step(val.name, val.amount)
         .recipe-detail__col
-          +step('ШАГ 08', 'Переложите один круг меренги на блюдо, выложите на него половину крема и слегка разровняйте. Посыпьте половиной ягод. ')
-          +step('ШАГ 09', 'Накройте второй меренгой, слегка прижмите. Смажьте оставшимся кремом и посыпьте оставшимися ягодами.')
-          +step('ШАГ 10', 'Посыпьте мелкими листиками мяты и подавайте. ')
+          each val in cooking3
+            +step(val.name, val.amount)
         
   .recipe-inner-to-top.flex.justify-content-center
     a(href="#recipe-inner").button-to-top.ancor Наверх

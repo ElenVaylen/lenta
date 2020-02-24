@@ -7,6 +7,9 @@
   line-height: 1;
   letter-spacing: 0.25px;
   background-color: #fff;
+  &.map-modal__open {
+    overflow: hidden;
+  }
 }
 .wrapper {
   display: flex;
