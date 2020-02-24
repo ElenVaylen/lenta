@@ -28,7 +28,7 @@ mixin knives-item(name, img, text, sale, price, oldprice, chip)
             img(src="./images/rub.png", alt="")
         .knives-item__preview.col
           p.knives-item__title= name
-          p.knives-item__text.font-din-pro= text
+          p.knives-item__text= text
 
 mixin knives-dotted-item(img)
   .knives-dotted__item

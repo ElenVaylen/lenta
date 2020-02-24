@@ -18,6 +18,7 @@ mixin recipes-grid-item(title, text, img, info, kkal, protein, fats, carbohydrat
             td.recipes-grid__item-usual= carbohydrates 
       .recipes-grid__item-right.col
         h3.recipes-grid__item-title= title
+        p.recipes-grid__item-info.recipes-grid__item-usual= info
         p.recipes-grid__item-text.recipes-grid__item-usual= text
       a.recipes-grid__item-link(href="./recipe.html")
 
@@ -45,6 +46,6 @@ section.recipes
         +recipes-grid-item('«Павлова» с летними ягодами', 'Этот летний десерт с горкой свежих ягод точно станет гвоздем программы. А если вы решите приготовить его в другое время года возьмите фрукты — например, отлично подойдут припущенные груши.', 'recipes-item1.jpg', '10 порций / 1 ч. 25 мин.', '261', '4,1', '10,9', '38,8')
         +recipes-grid-item('«Павлова» с летними ягодами', 'Этот летний десерт с горкой свежих ягод точно станет гвоздем программы. А если вы решите приготовить его в другое время года возьмите фрукты — например, отлично подойдут припущенные груши.', 'recipes-item1.jpg', '10 порций / 1 ч. 25 мин.', '261', '4,1', '10,9', '38,8')
     .recipes-to-top.flex.justify-content-center
-      .button-to-top Наверх
+      a(href="#start").button-to-top.ancor Наверх
       
 

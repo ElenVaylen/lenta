@@ -1,3 +1,15 @@
+mixin link(link_title, link)
+  a(href=link).recipe-detail__link= link_title
+
+mixin title(title, text)
+  h2.recipe-info__title= title 
+    <br>
+    = text
+
+mixin subtitle(subtitle)
+  if subtitle
+    h4.recipe-detail__col-subtitle= subtitle
+
 mixin recipe-detail__col-row(text1, text2)
   .recipe-detail__col-row
     p.recipe-detail__col-text= text1
@@ -10,7 +22,7 @@ mixin step(text1, text2)
     h4.recipe-detail__col-subtitle= text1
     p.recipe-detail__col-desc= text2
 
-section.recipe-inner
+section.recipe-inner#recipe-inner
   .navigation
     .container
       .navigation__list.flex.justify-content-center.align-items-center
@@ -26,9 +38,10 @@ section.recipe-inner
     .container
       .recipe-info__wrap.flex
         .recipe-info__img.col-auto
+          +title('«Павлова» с летними ягодами,', '10 порций, 1 ч. 25 мин.')
           img(src="./images/recipes-item1.jpg", alt="")
         .recipe-info__content.col
-          h2.recipe-info__title «Павлова» с летними ягодами, <br> 10 порций, 1 ч. 25 мин.
+          +title('«Павлова» с летними ягодами,', '10 порций, 1 ч. 25 мин.')
           p.recipe-info__text Этот летний десерт с горкой свежих ягод точно станет гвоздем программы. А если вы решите приготовить его в другое время года, возьмите фрукты – например, отлично подойдут припущенные груши.
           table.recipe-info__table
             thead
@@ -49,29 +62,29 @@ section.recipe-inner
                 td 0,8 г.
   .recipe-detail
     .container
-      .recipe-detail__top.flex.justify-content-between.align-items-end
+      .recipe-detail__top
         h3.recipe-detail__title Что понадобится
-        a(href="#").recipe-detail__link Распечатать рецепт
-      .recipe-detail__grid
+      .recipe-detail__grid.recipe-detail__components
+        +link('Распечатать рецепт', '#')
         .recipe-detail__col
-          h4.recipe-detail__col-subtitle МЕРЕНГА
+          +subtitle('МЕРЕНГА')
           +recipe-detail__col-row('01. Белки крупных яиц, желательно деревенских', '300 г.')
           +recipe-detail__col-row('02. Мелкий сахар', '6 шт.')
         .recipe-detail__col
-          h4.recipe-detail__col-subtitle НАЧИНКА
+          +subtitle('НАЧИНКА')
           +recipe-detail__col-row('03. Клубника', '200 г.')
           +recipe-detail__col-row('04. Малина', '200 г.')
           +recipe-detail__col-row('05. Жирные сливки', '200 мл.')
           +recipe-detail__col-row('06. Обезжиренный натуральный йогурт', '200 г.')
         .recipe-detail__col
-          h4.recipe-detail__col-subtitle
+          +subtitle('')
           +recipe-detail__col-row('07. Мелкий сахар', '2 ст. л.')
           +recipe-detail__col-row('08. Стручок ванили', '1шт.')
-          +recipe-detail__col-row('09.Несколько веточек мяты ')
-      .recipe-detail__top.flex.justify-content-between.align-items-end
+          +recipe-detail__col-row('09. Несколько веточек мяты ')
+      .recipe-detail__top
         h3.recipe-detail__title Как готовить
-        a(href="#").recipe-detail__link Скачать рецепт
       .recipe-detail__grid.recipe-detail__cooking
+        +link('Скачать рецепт', '#')
         .recipe-detail__col
           +step('ШАГ 01', 'Разогрейте духовку до 150 °C.')
           +step('ШАГ 02', 'Для меренги взбейте белки со щепоткой морской соли в настольном миксере до крепких пиков. Не выключая миксер, постепенно всыпьте сахар.')
@@ -88,4 +101,4 @@ section.recipe-inner
           +step('ШАГ 10', 'Посыпьте мелкими листиками мяты и подавайте. ')
         
   .recipe-inner-to-top.flex.justify-content-center
-    .button-to-top Наверх
+    a(href="#recipe-inner").button-to-top.ancor Наверх

@@ -14,6 +14,7 @@
   <body class="body">
     <div class="wrapper" id="wrapper">
       <div class="content">
+        <div class="overflow"></div>
         <header class="header">
           <div class="header__wrap">
             <div class="header__container container-big">
@@ -28,13 +29,9 @@
 <path d="M45.212 33.9265C41.3389 30.9414 38.265 33.1515 37.5273 33.5247C36.267 34.2709 35.4063 34.9885 34.7915 35.6774C35.1604 33.9839 35.7444 31.5729 35.8981 30.6831C36.1133 29.4776 36.6666 26.1194 35.8981 25.7462C35.683 25.6888 35.6522 25.6601 35.5907 26.349C35.5907 26.349 35.4985 27.698 34.3305 30.9414C33.8694 32.434 33.562 33.1802 33.2853 33.8978C32.9165 32.6349 31.8714 31.0849 29.4123 29.5063C28.6745 29.1044 25.6006 26.6647 21.7276 29.9655C21.3894 30.31 21.0513 30.8553 21.912 31.3433C22.7727 31.8312 23.0493 32.1182 23.2645 32.721C23.4797 33.3237 24.4018 35.3903 27.5372 35.6199C30.734 35.8496 31.3795 36.2801 31.9021 36.6819C31.9021 36.6819 32.2095 36.9403 32.4861 37.0838C32.4861 37.1412 32.4554 37.2273 32.4554 37.2847C32.4554 37.2847 31.9943 41.0734 33.0394 42.5373C34.2075 44.1446 35.4063 43.6854 35.4063 43.6854C35.4063 43.6854 34.6071 42.566 34.3919 40.4707C34.6993 40.3272 35.0682 40.0402 35.0682 40.0402C35.7444 39.5522 36.2363 39.2939 39.4331 39.0643C42.5685 38.8633 43.4906 36.969 43.7058 36.4523C43.921 35.907 44.1976 35.6486 45.0276 35.1894C45.8882 34.7589 45.5501 34.2422 45.212 33.9265ZM22.9264 30.5396C27.9675 29.6785 30.7955 32.4053 31.9328 34.3857C27.7524 30.4535 22.9264 30.5396 22.9264 30.5396ZM34.9145 37.9162C36.0826 36.1366 38.388 33.7543 43.921 34.4144C43.921 34.4144 37.4965 35.132 34.9145 37.9162Z" fill="#49A942"/>
 </svg>
 </a>
-                <div class="nav menu">
+                <nav class="menu">
                   <div class="menu__wrap">
                     <div class="menu__list flex">
-                      <div class="menu__close close">
-                        <div class="close-line"></div>
-                        <div class="close-line"></div>
-                      </div>
                               <div class="menu__item"><a class="menu__link" href="./#start">Главная</a>
                               </div>
                               <div class="menu__item"><a class="menu__link" href="./#rules">Правила</a>
@@ -49,16 +46,23 @@
                               </div>
                     </div>
                   </div>
-                </div>
+                </nav>
                 <div class="cities">
-                  <div class="cities__title dotted">Москва</div>
+                  <div class="cities__title dotted choise-city">Москва</div>
+                </div>
+                <div class="menu-bar">
+                  <div class="menu-bar__wrap">
+                    <div class="menu-bar__line"></div>
+                    <div class="menu-bar__line"></div>
+                    <div class="menu-bar__line"></div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </header>
         <main class="main">
-          <section class="recipe-inner">
+          <section class="recipe-inner" id="recipe-inner">
             <div class="navigation">
               <div class="container">
                 <div class="navigation__list flex justify-content-center align-items-center"><a class="navigation__links navigation__links-left" href="#">Хрустящий зимний салат</a>
@@ -84,9 +88,11 @@
             <div class="recipe-info">
               <div class="container">
                 <div class="recipe-info__wrap flex">
-                  <div class="recipe-info__img col-auto"><img src="./images/recipes-item1.jpg" alt=""></div>
+                  <div class="recipe-info__img col-auto">
+                              <h2 class="recipe-info__title">«Павлова» с летними ягодами,<br>10 порций, 1 ч. 25 мин.</h2><img src="./images/recipes-item1.jpg" alt="">
+                  </div>
                   <div class="recipe-info__content col">
-                    <h2 class="recipe-info__title">«Павлова» с летними ягодами, <br> 10 порций, 1 ч. 25 мин.</h2>
+                              <h2 class="recipe-info__title">«Павлова» с летними ягодами,<br>10 порций, 1 ч. 25 мин.</h2>
                     <p class="recipe-info__text">Этот летний десерт с горкой свежих ягод точно станет гвоздем программы. А если вы решите приготовить его в другое время года, возьмите фрукты – например, отлично подойдут припущенные груши.</p>
                     <table class="recipe-info__table">
                       <thead>
@@ -116,12 +122,12 @@
             </div>
             <div class="recipe-detail">
               <div class="container">
-                <div class="recipe-detail__top flex justify-content-between align-items-end">
-                  <h3 class="recipe-detail__title">Что понадобится</h3><a class="recipe-detail__link" href="#">Распечатать рецепт</a>
+                <div class="recipe-detail__top">
+                  <h3 class="recipe-detail__title">Что понадобится</h3>
                 </div>
-                <div class="recipe-detail__grid">
+                <div class="recipe-detail__grid recipe-detail__components"><a class="recipe-detail__link" href="#">Распечатать рецепт</a>
                   <div class="recipe-detail__col">
-                    <h4 class="recipe-detail__col-subtitle">МЕРЕНГА</h4>
+                              <h4 class="recipe-detail__col-subtitle">МЕРЕНГА</h4>
                               <div class="recipe-detail__col-row">
                                 <p class="recipe-detail__col-text">01. Белки крупных яиц, желательно деревенских</p><span class="recipe-detail__col-between"></span>
                                 <p class="recipe-detail__col-text">300 г.</p>
@@ -132,7 +138,7 @@
                               </div>
                   </div>
                   <div class="recipe-detail__col">
-                    <h4 class="recipe-detail__col-subtitle">НАЧИНКА</h4>
+                              <h4 class="recipe-detail__col-subtitle">НАЧИНКА</h4>
                               <div class="recipe-detail__col-row">
                                 <p class="recipe-detail__col-text">03. Клубника</p><span class="recipe-detail__col-between"></span>
                                 <p class="recipe-detail__col-text">200 г.</p>
@@ -151,7 +157,6 @@
                               </div>
                   </div>
                   <div class="recipe-detail__col">
-                    <h4 class="recipe-detail__col-subtitle"></h4>
                               <div class="recipe-detail__col-row">
                                 <p class="recipe-detail__col-text">07. Мелкий сахар</p><span class="recipe-detail__col-between"></span>
                                 <p class="recipe-detail__col-text">2 ст. л.</p>
@@ -161,15 +166,15 @@
                                 <p class="recipe-detail__col-text">1шт.</p>
                               </div>
                               <div class="recipe-detail__col-row">
-                                <p class="recipe-detail__col-text">09.Несколько веточек мяты </p>
+                                <p class="recipe-detail__col-text">09. Несколько веточек мяты </p>
                                 <p class="recipe-detail__col-text"></p>
                               </div>
                   </div>
                 </div>
-                <div class="recipe-detail__top flex justify-content-between align-items-end">
-                  <h3 class="recipe-detail__title">Как готовить</h3><a class="recipe-detail__link" href="#">Скачать рецепт</a>
+                <div class="recipe-detail__top">
+                  <h3 class="recipe-detail__title">Как готовить</h3>
                 </div>
-                <div class="recipe-detail__grid recipe-detail__cooking">
+                <div class="recipe-detail__grid recipe-detail__cooking"><a class="recipe-detail__link" href="#">Скачать рецепт</a>
                   <div class="recipe-detail__col">
                               <div class="recipe-detail__col-step">
                                 <h4 class="recipe-detail__col-subtitle">ШАГ 01</h4>
@@ -223,16 +228,14 @@
                 </div>
               </div>
             </div>
-            <div class="recipe-inner-to-top flex justify-content-center">
-              <div class="button-to-top">Наверх</div>
-            </div>
+            <div class="recipe-inner-to-top flex justify-content-center"><a class="button-to-top ancor" href="#recipe-inner">Наверх</a></div>
           </section>
 <section class="map">
   <div class="map-top">
     <div class="container">
       <div class="map-top__list flex justify-content-between">
         <div class="map-market"><a class="map-market__link map-market__hyper" href="#">Гипермаркеты</a><span class="map-market__slash"> / </span><a class="map-market__link map-market__super" href="#">Супермаркеты</a></div>
-        <div class="map-city"><span class="map-city__text">Ваш город: </span><a class="map-city__link dotted3" href="#">Москва</a></div>
+        <div class="map-city"><span class="map-city__text">Ваш город: </span><a class="map-city__link dotted3 choise-city" href="#">Москва</a></div>
       </div>
     </div>
   </div>
@@ -836,6 +839,12 @@ AMlwa/f5fpKfqPB3+X6T5jwd/l+kp+pcHf5fpPmPBH7/AC/SV/UuDv8AL9JP/wDT4Nfv8vxHzLg7
     </div>
   </div>
 </footer>
+<div class="map-modal">
+  <div class="map-modal__container">
+    <h3 class="map-modal__title">Выберите свой город</h3>
+    <div class="map-modal__list flex"></div>
+  </div>
+</div>
 <script src="./app.js"></script>
     </div>
   <script type="text/javascript" src="main.bundle.js"></script></body>

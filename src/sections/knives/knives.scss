@@ -6,25 +6,99 @@
   background-position: bottom center;
   background-size: 100% auto;
   padding-bottom: 430px;
+  @media (max-width: $laptop-l) {
+    padding-top: 70px;
+    padding-bottom: 345px;
+  }
+  @media (max-width: $laptop-xs) {
+    padding-bottom: 235px;
+    padding-top: 60px;
+  }
+  @media (max-width: $tablet) {
+    padding-top: 45px;
+    padding-bottom: 207px;
+  }
+  @media (max-width: $mobile-xl) {
+    padding-bottom: 180px;
+  }
+  @media (max-width: $mobile-m) {
+    padding-bottom: 120px;
+  }
   &-slider {
     max-width: 1800px;
     margin: 0 auto 80px auto;
+    @media (max-width: $laptop-xl) {
+      max-width: 1600px;
+    }
+    @media (max-width: $laptop-l) {
+      max-width: 1400px;
+      margin-bottom: 40px;
+    }
+    @media (max-width: $laptop-m) {
+      max-width: 1300px;
+    }
+    @media (max-width: $laptop-s) {
+      max-width: 1200px;
+    }
+    @media (max-width: $laptop-xs) {
+      max-width: 950px;
+    }
     &__arrows {
       margin-bottom: 100px;
+      @media (max-width: $laptop-l) {
+        margin-bottom: 80px;
+      }
+      @media (max-width: $tablet) {
+        margin-bottom: 60px;
+      }
+      @media (max-width: $mobile-xl) {
+        position: absolute;
+        top: 61px;
+        left: 20px;
+        right: 20px;
+        justify-content: space-between;
+      }
+      @media (max-width: $mobile-xs) {
+        top: 55px;
+      }
       .arrow-right {
         margin-left: 26px;
+        @media (max-width: $mobile-xl) {
+          margin: 0;
+        }
       }
     }
     .slick-slide {
       padding: 50px 0;
+      @media (max-width: $laptop-xs) {
+        padding: 30px 0;
+      }
+      @media (max-width: $tablet) {
+        padding: 0;
+      }
       &.slick-center {
         transform: scale(1.3);
       }
     }
   }
   &-dotted {
-    max-width: 1100px;
+    max-width: 1000px;
     margin: 0 auto 80px auto;
+    @media (max-width: $laptop-l) {
+      max-width: 900px;
+      margin-bottom: 60px;
+    }
+    @media (max-width: $laptop-xs) {
+      max-width: 800px;
+      margin-bottom: 50px;
+    }
+    @media (max-width: $tablet) {
+      margin-bottom: 30px;
+    }
+    @media (max-width: $mobile-xl) {
+      max-width: 500px;
+      padding: 0 60px;
+    }
     &__item {
       &-wrap {
         border-radius: 10px;
@@ -38,6 +112,13 @@
         background-color: #fbfcfc;
         padding: 8px 15px;
         cursor: pointer;
+        @media (max-width: $laptop-xs) {
+          height: 50px;
+        }
+        @media (max-width: $mobile-xs) {
+          height: 40px;
+          padding: 4px 8px;
+        }
         .slick-current & {
           background-color: $color-blue;
         }
@@ -56,30 +137,102 @@
       margin: auto;
       position: relative;
       margin: 0 70px;
+      @media (max-width: $laptop-xl) {
+        width: 390px;
+      }
+      @media (max-width: $laptop-l) {
+        width: 360px;
+        margin: 0 60px;
+      }
+      @media (max-width: $laptop-m) {
+        width: 340px;
+        margin: 0 50px;
+      }
+      @media (max-width: $laptop-s) {
+        margin: 0 40px;
+      }
+      @media (max-width: $laptop-xs) {
+        width: 260px;
+        margin: 0 35px;
+      }
+      @media (max-width: $tablet) {
+        width: 100%;
+        max-width: 700px;
+        margin: 0 auto;
+        padding: 0 30px;
+      }
+      @media (max-width: $mobile-m) {
+        padding: 0 20px;
+      }
+      @media (max-width: $mobile-xs) {
+        padding: 0 10px;
+      }
     }
     &__sale {
       position: absolute;
       top: 10px;
       right: 0;
       z-index: 2;
+      @media (max-width: $tablet) {
+        right: 30px;
+      }
+      @media (max-width: $mobile-m) {
+        right: 20px;
+      }
       svg {
         width: 100px;
         height: 100px;
-        filter: grayscale(100%) opacity(60%);
-        .slick-center & {
-          filter: grayscale(0%) opacity(100%);
+        @media (max-width: $laptop-l) {
+          width: 90px;
+          height: 90px;
+        }
+        @media (max-width: $laptop-m) {
+          width: 80px;
+          height: 80px;
+        }
+        @media (max-width: $laptop-xs) {
+          width: 65px;
+          height: 65px;
+        }
+        @media (max-width: $tablet) {
+          width: 100px;
+          height: 100px;
+        }
+        @media (max-width: $mobile-m) {
+          width: 80px;
+          height: 80px;
+        }
+        @media (max-width: $mobile-xs) {
+          width: 70px;
+          height: 70px;
+        }
+        @media (min-width: $tablet + 1) {
+          filter: grayscale(100%) opacity(60%);
+          .slick-center & {
+            filter: grayscale(0%) opacity(100%);
+          }
         }
       }
     }
     &__content {
       margin-top: 35px;
+      @media (max-width: $laptop-m) {
+        margin-top: 25px;
+      }
     }
     &__price {
-      background-color:  $color-grey;
+      background-color: $color-grey;
       width: 86px;
       color: #fff;
       text-align: center;
       padding: 5px 0;
+      @media (max-width: $laptop-xs) {
+        width: 75px;
+      }
+      @media (max-width: $tablet) {
+        background-color: $color-red;
+        width: 90px;
+      }
       .slick-center & {
         background-color: $color-red;
       }
@@ -87,19 +240,40 @@
     &__actual {
       font-size: 30px;
       margin: 0;
+      @media (max-width: $laptop-xs) {
+        font-size: 26px;
+      }
+      @media (max-width: $tablet) {
+        font-size: 31px;
+      }
       img {
         display: inline !important;
         padding-left: 5px;
         width: 12px;
+        @media (max-width: $tablet) {
+          width: 17px;
+        }
       }
     }
     &__chip {
       font-size: 15px;
       margin: 0;
+      @media (max-width: $laptop-xs) {
+        font-size: 14px;
+      }
+      @media (max-width: $tablet) {
+        font-size: 16px;
+      }
     }
     &__old {
       font-size: 23px;
       margin: 5px 0 0 0;
+      @media (max-width: $laptop-xs) {
+        font-size: 20px;
+      }
+      @media (max-width: $tablet) {
+        font-size: 24px;
+      }
       span {
         text-decoration: line-through;
       }
@@ -107,12 +281,17 @@
         display: inline !important;
         padding-left: 5px;
         width: 10px;
+        @media (max-width: $tablet) {
+          width: 14px;
+        }
       }
     }
     &__img {
-      filter: grayscale(100%);
-      .slick-center & {
-        filter: grayscale(0%);
+      @media (min-width: $tablet + 1) {
+        filter: grayscale(100%);
+        .slick-center & {
+          filter: grayscale(0%);
+        }
       }
       img {
         max-width: 100%;
@@ -120,12 +299,31 @@
     }
     &__preview {
       padding-left: 28px;
+      @media (max-width: $laptop-l) {
+        padding-left: 24px;
+      }
+      @media (max-width: $laptop-xs) {
+        padding-left: 20px;
+      }
     }
     &__title {
       color: $color-grey;
       font-size: 21px;
       margin: 0 0 15px 0;
       font-weight: normal;
+      @media (max-width: $laptop-m) {
+        margin: 0 0 8px 0;
+        font-size: 20px;
+      }
+      @media (max-width: $laptop-xs) {
+        font-size: 18px;
+      }
+      @media (max-width: $tablet) {
+        font-size: 21px;
+      }
+      @media (max-width: $tablet) {
+        color: $color-text;
+      }
       .slick-center & {
         color: $color-text;
       }
@@ -136,6 +334,15 @@
       margin: 0;
       font-weight: normal;
       line-height: 1.25;
+      font-family: $font-family;
+      @media (max-width: $laptop-m) {
+        line-height: 1.2;
+        font-size: 13px;
+      }
+      @media (max-width: $tablet) {
+        color: $color-text;
+        font-size: 16px;
+      }
       .slick-center & {
         color: $color-text;
       }

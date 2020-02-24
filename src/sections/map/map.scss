@@ -18,11 +18,35 @@
     top: -75px;
     width: 100%;
     left: 0;
-    font-size: 31px;
+    font-size: $font-normal;
     letter-spacing: 2px;
     line-height: 1.2;
+    @media (max-width: $laptop-l) {
+      font-size: $font-normal-l;
+      top: -60px;
+    }
+    @media (max-width: $laptop-xs) {
+      font-size: $font-normal-xs;
+    }
+    @media (max-width: $tablet) {
+      font-size: $font-normal-t;
+      top: -40px;
+    }
+    @media (max-width: $mobile-xl) {
+      font-size: $font-normal-m-xl;
+      top: -82px;
+    }
+    &__list {
+      @media (max-width: $mobile-xl) {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
   }
   &-market {
+    @media (max-width: $mobile-xl) {
+      margin-bottom: 15px;
+    }
     &__link {
       color: #fff;
       text-decoration: none;

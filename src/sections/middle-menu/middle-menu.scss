@@ -1,28 +1,106 @@
-@import '../../styles/general/colors.scss';
-
 .middle-menu {
-  background-image: url('../images/middle-menu-bg.png');
-  background-position: center center;
-  background-repeat: repeat-x;
+  background-image: url('../images/pattern.jpg');
   z-index: 3;
   position: relative;
+  &:before {
+    background-image: url('../images/wave.png');
+    background-repeat: repeat-x;
+    background-position: 0 0;
+    content: '';
+    height: 10px;
+    width: 100%;
+    position: absolute;
+    top: -8px;
+    left: 0;
+  }
+  &:after {
+    background-image: url('../images/wave-bot.png');
+    background-repeat: repeat-x;
+    background-position: 0 0;
+    content: '';
+    height: 10px;
+    width: 100%;
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+  }
   &__row {
     max-width: 1320px;
     margin: auto;
     position: relative;
     height: 171px;
+    z-index: 2;
+    @media (max-width: $laptop-l) {
+      height: 120px;
+    }
+    @media (max-width: $laptop-xs) {
+      height: 78px;
+    }
+    @media (max-width: $mobile-xl) {
+      justify-content: center;
+    }
+    @media (max-width: $mobile-m) {
+      margin-left: -12px;
+      margin-right: -12px;
+    }
+    @media (max-width: $mobile-s) {
+      height: auto;
+      padding: 20px 0;
+    }
   }
   &__discount {
     position: absolute;
     top: -32px;
     left: 14px;
+    @media (max-width: $tablet) {
+      top: -18px;
+      left: 0;
+    }
+    @media (max-width: $mobile-xl) {
+      display: none;
+    }
     svg {
       width: 225px;
       height: 225px;
+      @media (max-width: $laptop-l) {
+        width: 180px;
+        height: 180px;
+      }
+      @media (max-width: $laptop-xs) {
+        width: 140px;
+        height: 140px;
+      }
+      @media (max-width: $tablet) {
+        width: 110px;
+        height: 110px;
+      }
+    }
+  }
+  &__list {
+    @media (max-width: $mobile-s) {
+      flex-direction: column;
     }
   }
   &__item {
     margin: 0 80px;
     letter-spacing: 2px;
+    @media (max-width: $laptop-xs) {
+      margin: 0 50px;
+    }
+    @media (max-width: $tablet) {
+      margin: 0 30px;
+    }
+    @media (max-width: $mobile-xl) {
+      margin: 0 20px;
+    }
+    @media (max-width: $mobile-m) {
+      margin: 0 12px;
+    }
+    @media (max-width: $mobile-s) {
+      margin-bottom: 15px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
   }
 }

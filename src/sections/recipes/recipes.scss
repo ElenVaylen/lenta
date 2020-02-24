@@ -1,10 +1,21 @@
-@import '../../styles/general/colors.scss';
+
 .recipes {
   background-image: url('../images/pattern.jpg');
   background-position: 0 0;
   position: relative;
   padding-top: 265px;
   padding-bottom: 90px;
+  @media (max-width: $laptop-l) {
+    padding-top: 220px;
+  }
+  @media (max-width: $tablet) {
+    padding-top: 150px;
+    padding-bottom: 70px;
+  }
+  @media (max-width: $mobile-xl) {
+    padding-top: 105px;
+    padding-bottom: 110px;
+  }
   &:before {
     background-image: url('../images/wave.png');
     background-repeat: repeat-x;
@@ -22,16 +33,104 @@
     left: 50%;
     transform: translateX(-50%);
     margin-top: -90px;
+    @media (max-width: $laptop-l) {
+      top: -520px;
+      margin-top: -45px;
+    }
+    @media (max-width: $laptop-xs) {
+      top: -410px;
+    }
+    @media (max-width: $tablet) {
+      top: -312px;
+    }
+    @media (max-width: $mobile-xl) {
+      top: -286px;
+      margin: 0;
+    }
+    @media (max-width: $mobile-m) {
+      top: -241px;
+    }
     iframe {
+      width: 1100px;
+      height: 615px;
+      @media (max-width: $laptop-l) {
+        width: 920px;
+        height: 520px;
+      }
+      @media (max-width: $laptop-xs) {
+        width: 720px;
+        height: 410px;
+      }
+      @media (max-width: $tablet) {
+        width: 570px;
+        height: 322px;    
+      }
+      @media (max-width: $mobile-xl) {
+        width: 410px;
+        height: 256px;
+      }
+      @media (max-width: $mobile-m) {
+        width: 370px;
+        height: 210px;
+      }
+      @media (max-width: $mobile-s) {
+        width: 100vw;
+      }
     }
   }
   &-menu {
     margin-bottom: 100px;
+    @media (max-width: $laptop-l) {
+      margin-bottom: 80px;
+    }
+    @media (max-width: $laptop-s) {
+      margin-bottom: 60px;
+    }
+    @media (max-width: $laptop-xs) {
+      margin-bottom: 50px;
+    }
+    @media (max-width: $mobile-s) {
+      margin-bottom: 40px;
+    }
+    &__list {
+      @media (max-width: $mobile-s) {
+        flex-direction: column;
+      }
+    }
+    .menu-dotted {
+      @media (max-width: $mobile-s) {
+        margin-bottom: 15px;
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
   }
   &-grid {
     padding-bottom: 80px;
+    @media (max-width: $laptop-l) {
+      padding-bottom: 60px;
+    }
+    @media (max-width: $tablet) {
+      max-width: 691px;
+      margin: auto;
+    }
+    @media (max-width: $laptop-xs) {
+      padding-bottom: 40px;
+    }
+    @media (max-width: $mobile-m) {
+      padding-bottom: 20px;
+    }
     &__wrap {
       position: relative;
+      @media (max-width: $mobile-m) {
+        margin-left: -10px;
+        margin-right: -10px;
+      }
+      @media (max-width: $mobile-s) { 
+        margin-left: -7px;
+        margin-right: -7px;
+      }
       &:before {
         content: '';
         background-image: url('../images/dot.png');
@@ -40,6 +139,9 @@
         left: 0;
         width: 3px;
         height: 100%;
+        @media (max-width: $mobile-m) {
+          display: none;
+        }
       }
       &:after {
         content: '';
@@ -49,11 +151,24 @@
         left: 0;
         width: 100%;
         height: 3px;
+        @media (max-width: $mobile-m) {
+          display: none;
+        }
       }
     }
     &__item {
       width: 33.33%;
       position: relative;
+      @media (max-width: $laptop-l) {
+        width: 50%;
+      }
+      @media (max-width: $mobile-m) {
+        padding: 0 10px;
+        margin-bottom: 25px;
+      }
+      @media (max-width: $mobile-s) { 
+        padding: 0 7px;
+      }
       &:before {
         content: '';
         background-image: url('../images/dot.png');
@@ -62,6 +177,9 @@
         right: 0;
         width: 3px;
         height: 100%;
+        @media (max-width: $mobile-m) {
+          display: none;
+        }
       }
       &:after {
         content: '';
@@ -71,26 +189,49 @@
         left: 0;
         width: 100%;
         height: 3px;
+        @media (max-width: $mobile-m) {
+          display: none;
+        }
       }
       &-wrap {
         padding: 38px;
         position: relative;
-        &:hover {
-          background-color: #00000017;
+        @media (max-width: $laptop-xl) {
+          padding: 26px;
+        }
+        @media (max-width: $laptop-xs) {
+          padding: 22px;
+        }
+        @media (max-width: $tablet) {
+          flex-direction: column;
+        }
+        @media (max-width: $mobile-m) {
+          padding: 0;
+        }
+        @media (min-width: $tablet+ 1) {
+          &:hover {
+            background-color: #00000017;
+          }
         }
       }
       &-usual {
-        font-size: 21px;
+        font-size: $base-font-size;
         color: #fff;
-        font-family: 'DIN Pro Cond';
-        line-height: 1.25;
+        font-family: $font-family;
+        line-height: $line-height-text;
         font-weight: normal;
+        @media (max-width: $laptop-xs) {
+          font-size: $base-font-size-xs;
+        }
       }
       &-table {
         width: 100%;
         border-collapse: collapse;
         border: none;
         border-spacing: unset;
+        @media (max-width: $mobile-m) {
+          display: none;
+        }
         td {
           border: 1px solid #fff;
           text-align: center;
@@ -98,28 +239,73 @@
       }
       &-left {
         width: 210px;
+        @media (max-width: $laptop-xs) {
+          width: 190px;
+        }
+        @media (max-width: $tablet) {
+          width: 100%;
+        }
         img {
           width: 100%;
+          display: block;
         }
       }
       &-right {
         padding-left: 30px;
+        @media (max-width: $laptop-xs) {
+          padding-left: 22px;
+        }
+        @media (max-width: $tablet) {
+          padding-left: 0px;
+          padding-top: 15px;
+        }
+        @media (max-width: $mobile-m) {
+          padding-top: 5px;
+        }
       }
       &-title {
-        font-size: 31px;
+        font-size: $font-normal;
         color: $color-yellow;
         margin: 0;
         line-height: 1.25;
         font-weight: normal;
         border-bottom: 2px solid $color-yellow;
         display: inline;
+        @media (max-width: $laptop-xs) {
+          font-size: $font-normal-xs;
+        }
+        @media (max-width: $mobile-m) {
+          font-size: 20px;
+          border-width: 1px;
+        }
       }
       &-text {
         margin: 25px 0 0 0;
         display: block;
+        @media (max-width: $laptop-xs) {
+          margin-top: 18px;
+        }
+        @media (max-width: $mobile-m) {
+          display: none;
+        }
       }
       &-info {
         margin: 20px 0 16px 0;
+        @media (max-width: $laptop-xs) {
+          margin: 14px 0;
+        }
+        .recipes-grid__item-left & {
+          @media (max-width: $mobile-m) { 
+            display: none;
+          }
+        }
+        .recipes-grid__item-right & {
+          display: none;
+          @media (max-width: $mobile-m) { 
+            display: block;
+            margin: 10px 0 0 0;
+          }
+        }
       }
       &-link {
         position: absolute;
