@@ -3,17 +3,32 @@ window.$ = window.jQuery = $;
 import 'slick-carousel';
 
 let getCyties = async () => {
-  const response =await fetch('https://lenta.com/api/v1/cities', {
-    headers: {
-    'Access-Control-Allow-Origin': '*',
-    },
-  })
-  let myJson;
-  if (response.ok) {
-    myJson = await response.json();
+  // const response =await fetch('https://lenta.com/api/v1/cities', {mode: 'cors'}, {headers: {'Content-Type': 'application/json'}});
+  // let myJson;
+  // if (response.ok) {
+  //   myJson = await response.json();
+  // }
+  // console.log(myJson);
+  // console.log(JSON.stringify(myJson));
+
+  const url = 'https://lenta.com/api/v1/cities';
+  try {
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      },
+      credentials: 'same-origin',
+      mode: 'no-cors'
+    });
+    if (response.ok) {
+      myJson = await response.json();
+    }
+    console.log('Успех:', JSON.stringify(myJson));
+  } catch (error) {
+    console.error('Ошибка:', error);
   }
-  console.log(myJson);
-  console.log(JSON.stringify(myJson));
 }
 getCyties();
 
