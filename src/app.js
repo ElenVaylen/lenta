@@ -1,8 +1,8 @@
 import $ from 'jquery';
 window.$ = window.jQuery = $;
 import 'slick-carousel';
-import cities from '../cities.json'
-import map from '../map.json'
+import cities from '../cities.json';
+import map from '../map.json';
 
 // console.log({cities, map})
 
@@ -28,6 +28,18 @@ import map from '../map.json'
 //   }
 // }
 // getCyties();
+
+function loadFile(filePath) {
+    var result = null;
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("GET", filePath, true);
+    xmlhttp.send();
+    if (xmlhttp.status==200) {
+      result = xmlhttp.responseText;
+    }
+    return result;
+}
+console.log(loadFile('https://lenta.com/api/v1/cities'))
 
 $(document).ready(function() {
   let modalCity = $('.map-modal__list');
