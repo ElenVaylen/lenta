@@ -2,14 +2,10 @@ import $ from 'jquery';
 window.$ = window.jQuery = $;
 import 'slick-carousel';
 import AOS from 'aos';
-import cities from '../cities.json';
-import map from '../map.json';
-import axios from 'axios'
+import cities from './json/cities.json';
+import ymaps$1 from 'ymaps'
 
-// console.log({cities, map})
-
-
-let getCyties = async () => {
+let getCities = async () => {
   const url = 'http://localhost:8010/api/v1/cities';
   try {
     const response = await fetch(url, {
@@ -28,7 +24,7 @@ let getCyties = async () => {
   }
 }
 
-async function loadFile(cityId) {
+async function loadStores(cityId) {
     const response = await fetch(`http://localhost:8010/api/v1/cities/${cityId}/stores`, {
       headers: {
         'Access-Control-Allow-Origin': '*'
@@ -39,7 +35,15 @@ async function loadFile(cityId) {
     }
 }
 $(document).ready(async function() {
-  const cities = await getCyties();
+  // В случае, если мы хотим получать города через АПИ
+  // const cities = await getCities();
+  let stores;
+  const currentCity = JSON.parse(localStorage.getItem('lenta_current_city'));
+  if (currentCity) {
+    stores = loadStores(currentCity.id)
+  } else {
+    $('.body').addClass('map-modal__open');
+  }
   console.log(cities)
   let modalCity = $('.map-modal__list');
   cities.map(item => {
@@ -50,13 +54,19 @@ $(document).ready(async function() {
     ${item.name}</a>
     </div>`);
   });
-  const res = await loadFile('spb')
+  const res = await loadStores('spb');
   console.log(res)
   $(".map-modal__link").on("click", function (event) {
     event.preventDefault();
+
     let text = $(this).text();
+    const cityID = event.currentTarget.id;
+
+    stores = loadStores(cityID);
     $('.body').removeClass('map-modal__open');
     $('.choise-city').text(text);
+    const cityData = cities.find(city => city.id = cityID);
+    localStorage.setItem('lenta_current_city', JSON.stringify(cityData));
   });
   $('.choise-city').click(function(event){
     event.preventDefault();
