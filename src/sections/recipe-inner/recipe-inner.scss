@@ -389,6 +389,7 @@
       font-weight: normal;
       font-size: $font-normal;
       margin: 0 0 35px 0;
+      text-transform: uppercase;
       @media (max-width: $laptop-l) {
         font-size: $font-normal-l;
         margin: 0 0 30px 0;

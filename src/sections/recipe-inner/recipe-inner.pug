@@ -1,8 +1,8 @@
 mixin link(link_title, link)
-  a(href=link).recipe-detail__link= link_title
+  a(href=link).recipe-detail__link(data-aos="zoom-out-left" data-aos-delay="0")= link_title
 
 mixin title(title, text)
-  h2.recipe-info__title= title
+  h2.recipe-info__title(data-aos="fade-left" data-aos-delay="0")= title
     | ,
     <br>
     = text
@@ -40,11 +40,11 @@ section.recipe-inner#recipe-inner
       .recipe-info__wrap.flex
         .recipe-info__img.col-auto
           +title(title, howMuch)
-          img(src=`./images/${imgPage}`, alt="")
+          img(src=`./images/${imgPage}`, alt="")(data-aos="fade-right")
         .recipe-info__content.col
           +title(title, howMuch)
-          p.recipe-info__text= desc
-          table.recipe-info__table
+          p.recipe-info__text(data-aos="fade" data-aos-delay="150")= desc
+          table.recipe-info__table(data-aos="fade" data-aos-delay="200")
             thead
               tr
                 td Ккал
@@ -64,32 +64,32 @@ section.recipe-inner#recipe-inner
   .recipe-detail
     .container
       .recipe-detail__top
-        h3.recipe-detail__title Что понадобится
+        h3.recipe-detail__title(data-aos="zoom-out-right" data-aos-delay="0") Что понадобится
       .recipe-detail__grid.recipe-detail__components
         +link('Распечатать рецепт', printRecipeLink)
-        .recipe-detail__col
-          +subtitle('МЕРЕНГА')
+        .recipe-detail__col(data-aos="fade-in" data-aos-delay="100")
+          +subtitle(componentsTitle1)
           each val in components1
             +recipe-detail__col-row(val.name, val.amount)
-        .recipe-detail__col
-          +subtitle('НАЧИНКА')
+        .recipe-detail__col(data-aos="fade-in" data-aos-delay="200")
+          +subtitle(componentsTitle2)
           each val in components2
             +recipe-detail__col-row(val.name, val.amount)
-        .recipe-detail__col
-          +subtitle('')
+        .recipe-detail__col(data-aos="fade-in" data-aos-delay="300")
+          +subtitle(componentsTitle3)
           each val in components3
             +recipe-detail__col-row(val.name, val.amount)
       .recipe-detail__top
-        h3.recipe-detail__title Как готовить
+        h3.recipe-detail__title(data-aos="zoom-out-right" data-aos-delay="0") Как готовить
       .recipe-detail__grid.recipe-detail__cooking
         +link('Скачать рецепт', downRecipeLink)
-        .recipe-detail__col
+        .recipe-detail__col(data-aos="fade-in" data-aos-delay="100")
           each val in cooking1
             +step(val.name, val.amount)
-        .recipe-detail__col
+        .recipe-detail__col(data-aos="fade-in" data-aos-delay="200")
           each val in cooking2
             +step(val.name, val.amount)
-        .recipe-detail__col
+        .recipe-detail__col(data-aos="fade-in" data-aos-delay="300")
           each val in cooking3
             +step(val.name, val.amount)
         

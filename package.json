@@ -6,12 +6,16 @@
   "scripts": {
     "build": "webpack --mode=production",
     "build:dev": "webpack --mode=development",
-    "start": "webpack-dev-server --mode=development"
+    "start": "webpack-dev-server --mode=development",
+    "proxy": "lcp --proxyUrl https://lenta.com/ --proxyPartial=&nbsp"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "aos": "^2.3.4",
+    "axios": "^0.19.2",
     "jquery": "^3.4.1",
+    "local-cors-proxy": "^1.1.0",
     "slick-carousel": "^1.8.1"
   },
   "devDependencies": {

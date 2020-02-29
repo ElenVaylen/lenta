@@ -1,9 +1,9 @@
 section.middle-menu#rules
   .container
     .middle-menu__row.flex.justify-content-end.align-items-center
-      .middle-menu__discount.svg-wrap
+      .middle-menu__discount.svg-wrap(data-aos="fade-right")
         include ../../images/discount-01.svg
       .middle-menu__list.flex.align-items-center
-        a.middle-menu__item.menu-dotted.dotted2(href='') Условия акции
-        a.middle-menu__item.menu-dotted.dotted2(href='') Скачать буклет
-        a.middle-menu__item.menu-dotted.dotted2(href='') Рецепты
+        a.middle-menu__item.menu-dotted.dotted2(href='./docs/uslovia_akcii.pdf' target="_blank")(data-aos="fade" data-aos-delay="0") Условия акции
+        a.middle-menu__item.menu-dotted.dotted2(href='./docs/buklet.pdf' target="_blank")(data-aos="fade" data-aos-delay="50") Скачать буклет
+        a.middle-menu__item.menu-dotted.dotted2.ancor(href='#recipes')(data-aos="fade" data-aos-delay="100") Рецепты

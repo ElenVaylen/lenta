@@ -77,6 +77,18 @@ module.exports = {
         ],
       },
       {
+        test: /\.(pdf|docx)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'docs/',
+            },
+          },
+        ],
+      },
+      {
         test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
         use: [
           {
@@ -115,6 +127,10 @@ module.exports = {
       {
         from: path.resolve(__dirname, 'src/images'),
         to: path.resolve(__dirname, 'dist/images'),
+      },
+      {
+        from: path.resolve(__dirname, 'src/docs'),
+        to: path.resolve(__dirname, 'dist/docs'),
       },
       {
         from: path.resolve(__dirname, 'src/favicon.ico'),

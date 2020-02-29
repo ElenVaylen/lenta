@@ -1,7 +1,8 @@
-
-mixin menu-item(title, link)
+mixin menu-item(title, link, notAncor=false)
   .menu__item
-    if main === true
+    if notAncor === true
+      a.menu__link(href=link target="_blank")= title
+    else if (main === true && notAncor !== true)
       a.menu__link.ancor(href=link)= title
     else
       a.menu__link(href=`./${link}`)= title
@@ -21,7 +22,7 @@ header.header
               +menu-item('Коллекция ножей', '#knives')
               +menu-item('Рецепты', '#recipes')
               +menu-item('Смотреть видео', '#video')
-              +menu-item('Скачать буклет', '#booklet')
+              +menu-item('Скачать буклет', './docs/buklet.pdf', true)
         .cities
           .cities__title.dotted.choise-city Москва
         .menu-bar
