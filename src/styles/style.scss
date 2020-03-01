@@ -1,9 +1,9 @@
 @import './general/normalize';
+@import '../../node_modules/animate.css/animate.css';
 @import './general/variables';
 @import './general/fonts';
 @import './general/base';
 @import '../../node_modules/slick-carousel/slick/slick';
-@import '../../node_modules/aos/src/sass/aos.scss';
 @import './../sections/header/header';
 @import './../sections/start/start';
 @import './../sections/middle-menu/middle-menu';

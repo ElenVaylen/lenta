@@ -1,8 +1,8 @@
 mixin link(link_title, link)
-  a(href=link).recipe-detail__link(data-aos="zoom-out-left" data-aos-delay="0")= link_title
+  a(href=link).recipe-detail__link.wow.fadeInRight(data-wow-duration="1s" data-wow-delay="0.2s")= link_title
 
 mixin title(title, text)
-  h2.recipe-info__title(data-aos="fade-left" data-aos-delay="0")= title
+  h2.recipe-info__title.wow.fadeIn(data-wow-duration="1s" data-wow-delay="0.2s")= title
     | ,
     <br>
     = text
@@ -12,14 +12,14 @@ mixin subtitle(subtitle)
     h4.recipe-detail__col-subtitle= subtitle
 
 mixin recipe-detail__col-row(text1, text2)
-  .recipe-detail__col-row
+  .recipe-detail__col-row.wow.fadeIn(data-wow-duration="1s" data-wow-delay="0.2s")
     p.recipe-detail__col-text= text1
     if text2
       span.recipe-detail__col-between
     p.recipe-detail__col-text= text2
 
 mixin step(text1, text2)
-  .recipe-detail__col-step
+  .recipe-detail__col-step.wow.fadeIn(data-wow-duration="1s" data-wow-delay="0.2s")
     h4.recipe-detail__col-subtitle= text1
     p.recipe-detail__col-desc= text2
 
@@ -40,11 +40,11 @@ section.recipe-inner#recipe-inner
       .recipe-info__wrap.flex
         .recipe-info__img.col-auto
           +title(title, howMuch)
-          img(src=`./images/${imgPage}`, alt="")(data-aos="fade-right")
+          img(src=`./images/${imgPage}`, alt="").wow.fadeInLeft(data-wow-duration="1s" data-wow-delay="0.2s")
         .recipe-info__content.col
           +title(title, howMuch)
-          p.recipe-info__text(data-aos="fade" data-aos-delay="150")= desc
-          table.recipe-info__table(data-aos="fade" data-aos-delay="200")
+          p.recipe-info__text.wow.fadeIn(data-wow-duration="1s" data-wow-delay="0.2s")= desc
+          table.recipe-info__table.wow.fadeIn(data-wow-duration="1s" data-wow-delay="0.5s")
             thead
               tr
                 td Ккал
@@ -64,32 +64,32 @@ section.recipe-inner#recipe-inner
   .recipe-detail
     .container
       .recipe-detail__top
-        h3.recipe-detail__title(data-aos="zoom-out-right" data-aos-delay="0") Что понадобится
+        h3.recipe-detail__title.wow.fadeInLeft(data-wow-duration="1s" data-wow-delay="0.2s") Что понадобится
       .recipe-detail__grid.recipe-detail__components
         +link('Распечатать рецепт', printRecipeLink)
-        .recipe-detail__col(data-aos="fade-in" data-aos-delay="100")
+        .recipe-detail__col
           +subtitle(componentsTitle1)
           each val in components1
             +recipe-detail__col-row(val.name, val.amount)
-        .recipe-detail__col(data-aos="fade-in" data-aos-delay="200")
+        .recipe-detail__col
           +subtitle(componentsTitle2)
           each val in components2
             +recipe-detail__col-row(val.name, val.amount)
-        .recipe-detail__col(data-aos="fade-in" data-aos-delay="300")
+        .recipe-detail__col
           +subtitle(componentsTitle3)
           each val in components3
             +recipe-detail__col-row(val.name, val.amount)
       .recipe-detail__top
-        h3.recipe-detail__title(data-aos="zoom-out-right" data-aos-delay="0") Как готовить
+        h3.recipe-detail__title.wow.fadeInLeft(data-wow-duration="1s" data-wow-delay="0.2s") Как готовить
       .recipe-detail__grid.recipe-detail__cooking
         +link('Скачать рецепт', downRecipeLink)
-        .recipe-detail__col(data-aos="fade-in" data-aos-delay="100")
+        .recipe-detail__col
           each val in cooking1
             +step(val.name, val.amount)
-        .recipe-detail__col(data-aos="fade-in" data-aos-delay="200")
+        .recipe-detail__col
           each val in cooking2
             +step(val.name, val.amount)
-        .recipe-detail__col(data-aos="fade-in" data-aos-delay="300")
+        .recipe-detail__col
           each val in cooking3
             +step(val.name, val.amount)
         

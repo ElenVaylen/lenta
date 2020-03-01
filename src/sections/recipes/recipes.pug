@@ -1,6 +1,6 @@
 mixin recipes-grid-item(title, text, img, info, kkal, protein, fats, carbohydrates, link)
   .recipes-grid__item
-    .recipes-grid__item-wrap.flex
+    .recipes-grid__item-wrap.flex.wow.fadeIn(data-wow-duration="1s" data-wow-delay="0.2s")
       .recipes-grid__item-left.col-auto
         .recipes-grid__item-img
           img(src=`./images/${img}`, alt="title")
@@ -30,7 +30,7 @@ section.recipes
       .recipes-menu__list.flex.align-items-center.justify-content-center#booklet
         a.menu-dotted.dotted2(href='./docs/uslovia_akcii.pdf' target="_blank") Условия акции
         a.menu-dotted.dotted2(href='./docs/buklet.pdf' target="_blank") Скачать буклет
-    h2.section-title.section-title__white#recipes Рецепты от Джейми
+    h2.section-title.section-title__white#recipes.wow.fadeIn(data-wow-duration="1s" data-wow-delay="0.2s") Рецепты от Джейми
     .recipes-grid
       .recipes-grid__wrap.flex
         +recipes-grid-item('«Павлова» с летними ягодами', 'Этот летний десерт с горкой свежих ягод точно станет гвоздем программы. А если вы решите приготовить его в другое время года, возьмите фрукты – например, отлично подойдут припущенные груши.', 'recipes-item1.jpg', '10 порций / 1 ч. 25 мин.', '261', '4,1', '10,9', '38,8', "./recipe1.html")

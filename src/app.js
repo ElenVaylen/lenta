@@ -1,11 +1,24 @@
 import $ from 'jquery';
 window.$ = window.jQuery = $;
 import 'slick-carousel';
-import AOS from 'aos';
+import WOW from 'wow.js';
 import cities from './json/cities.json';
 import spb from './json/spb.json';
 import lobl from './json/lobl.json';
 import mobl from './json/mobl.json';
+
+let wow = new WOW(
+  {
+    boxClass:     'wow',      // animated element css class (default is wow)
+    animateClass: 'animated', // animation css class (default is animated)
+    offset:       0,          // distance to the element when triggering the animation (default is 0)
+    mobile:       false,       // trigger animations on mobile devices (default is true)
+    live:         true,       // act on asynchronously loaded content (default is true)
+    scrollContainer: null,    // optional scroll container selector, otherwise use window,
+    resetAnimation: true,     // reset animation on end (default is true)
+  }
+);
+wow.init();
 
 let myMap;
 let stores;
@@ -221,15 +234,6 @@ $(document).ready(async function() {
 });
 $(document).ready(function() {
   $('.body').removeClass('loading');
-  
-  AOS.init({
-    offset: 0,
-    duration: 600,
-    easing: 'ease-in-sine',
-    delay: 0,
-    disable: 'mobile',
-    once: true
-  });
 
   $('.menu-bar__wrap').click(function(){
     if($('.body').hasClass('menu-open')) {
