@@ -2,14 +2,100 @@ import $ from 'jquery';
 window.$ = window.jQuery = $;
 import 'slick-carousel';
 import AOS from 'aos';
-import cities from '../cities.json';
-import map from '../map.json';
-import axios from 'axios'
+import cities from './json/cities.json';
+import defaultMap from './json/map.json'
 
-// console.log({cities, map})
+let mapCount = 0;
 
+const init = (stores) => {
+  const currentCity = JSON.parse(localStorage.getItem('lenta_current_city'))
+  const myMap = new ymaps.Map("map", {
+    // Координаты центра карты.
+    // Порядок по умолчнию: «широта, долгота».
+    // Чтобы не определять координаты центра карты вручную,
+    // воспользуйтесь инструментом Определение координат.
+    center: [currentCity.lat, currentCity.long],
+    // Уровень масштабирования. Допустимые значения:
+    // от 0 (весь мир) до 19.
+    zoom: 10,
+    controls: ["zoomControl"]
+  });
+  myMap.behaviors.disable("scrollZoom");
+  let objectManager = new ymaps.ObjectManager({
+    // Чтобы метки начали кластеризоваться, выставляем опцию.
+    clusterize: false,
+    // ObjectManager принимает те же опции, что и кластеризатор.
+    gridSize: 32,
+    clusterDisableClickZoom: true
+  });
+  objectManager.objects.options.set({
+    iconLayout: "default#image",
+    iconImageHref: "./images/marker.png",
+    // картинка иконки
+    iconImageSize: [55, 63],
+    // размеры картинки
+    iconImageOffset: [-27, -63] // смещение картинки
+  });
+  const points = stores.map(store => ({
+    type: 'Feature',
+    id: store.id,
+    point: store.name,
+    pointType: store.type,
+    geometry: {
+      type: "Point",
+      coordinates: [store.lat, store.long]
+    },
+    properties: {
+      balloonContent: '<div class="balloncontent"><div class="balloncontentcapt cond">' + store.name + "</div></div>"
+    }
+  }))
+  objectManager.add({
+    type: "FeatureCollection",
+    features: points
+  })
+  myMap.geoObjects.add(objectManager)
+  objectManager.setFilter(filterItems.bind("hypermarket"));
+  objectManager.objects.events.add("click", function (e) {
+    let objectId = e.get("objectId"); // let point = objectManager.objects.getById(objectId);
 
-let getCyties = async () => {
+    objectManager.objects.balloon.open(objectId);
+  });
+  $('.map-market__link').click(function(e) {
+    e.preventDefault();
+    if ($(this).hasClass('map-market__super')) {
+      objectManager.setFilter(filterItems.bind("supermarket"))
+    } else {
+      objectManager.setFilter(filterItems.bind("hypermarket"))
+    }
+    if (!$(this).hasClass('map-market__active')) {
+      $('.map-market__link:not(map-market__active)').removeClass('map-market__active dotted3');
+      $(this).addClass('map-market__active dotted3');
+    } else {
+      return false;
+    }
+  });
+};
+
+const filterItems = function filterItems(point) {
+  return point.pointType == this;
+}
+
+let addMarker = function addMarker(point, type) {
+  let coord1 = point.latitude;
+  let coord2 = point.longitude;
+  return {
+    type: "Feature",
+    id: mapCount++,
+    point: point.name,
+    pointType: type,
+    geometry: {
+      type: "Point",
+      coordinates: [coord1, coord2]
+    },
+  };
+};
+
+let getCities = async () => {
   const url = 'http://localhost:8010/api/v1/cities';
   try {
     const response = await fetch(url, {
@@ -28,7 +114,7 @@ let getCyties = async () => {
   }
 }
 
-async function loadFile(cityId) {
+async function loadStores(cityId) {
     const response = await fetch(`http://localhost:8010/api/v1/cities/${cityId}/stores`, {
       headers: {
         'Access-Control-Allow-Origin': '*'
@@ -39,7 +125,18 @@ async function loadFile(cityId) {
     }
 }
 $(document).ready(async function() {
-  const cities = await getCyties();
+  // В случае, если мы хотим получать города через АПИ
+  // const cities = await getCities();
+  let stores;
+  const currentCity = JSON.parse(localStorage.getItem('lenta_current_city'));
+  if (currentCity) {
+    stores = await loadStores(currentCity.id)
+    let text = currentCity.name;
+    $('.choise-city').text(text);
+  } else {
+    stores = defaultMap;
+    $('.body').addClass('map-modal__open');
+  }
   console.log(cities)
   let modalCity = $('.map-modal__list');
   cities.map(item => {
@@ -50,18 +147,25 @@ $(document).ready(async function() {
     ${item.name}</a>
     </div>`);
   });
-  const res = await loadFile('spb')
+  const res = await loadStores('spb');
   console.log(res)
   $(".map-modal__link").on("click", function (event) {
     event.preventDefault();
+
     let text = $(this).text();
+    const cityID = event.currentTarget.id;
+
+    stores = loadStores(cityID);
     $('.body').removeClass('map-modal__open');
     $('.choise-city').text(text);
+    const cityData = cities.find(city => city.id = cityID);
+    localStorage.setItem('lenta_current_city', JSON.stringify(cityData));
   });
   $('.choise-city').click(function(event){
     event.preventDefault();
     $('.body').addClass('map-modal__open');
   });
+  ymaps.ready(() => init(stores))
 });
 $(document).ready(function() {
 
@@ -145,15 +249,6 @@ $(document).ready(function() {
   });
 
   $('.map-market__hyper').addClass('map-market__active dotted3');
-  $('.map-market__link').click(function(e) {
-    e.preventDefault();
-    if (!$(this).hasClass('map-market__active')) {
-      $('.map-market__link:not(map-market__active)').removeClass('map-market__active dotted3');
-      $(this).addClass('map-market__active dotted3');
-    } else {
-      return false;
-    }
-  });
 
   $(".ancor").on("click", function (event) {
     event.preventDefault();
