@@ -142,7 +142,7 @@
       max-width: 600px;
       padding: 25px;
     }
-    @media (max-width: $mobile-m) {
+    @media (max-width: $mobile-l) {
       max-width: 300px;
       padding: 25px 40px;
     }
@@ -154,7 +154,7 @@
   &__col {
     width: 33.33%;
     padding: 0 15px;
-    @media (max-width: $mobile-m) {
+    @media (max-width: $mobile-l) {
       width: 100%;
     }
   }
@@ -191,6 +191,24 @@
     font-size: 18px;
     text-align: center;
     line-height: 20px;
+    @media (max-width: $laptop-l) {
+      width: 18px;
+      height: 18px;
+      font-size: 16px;
+      line-height: 18px;
+    }
+    @media (max-width: $laptop-xs) {
+      width: 16px;
+      height: 16px;
+      font-size: 14px;
+      line-height: 17px;
+    }
+    @media (max-width: $tablet) {
+      width: 15px;
+      height: 15px;
+      line-height: 15px;
+      top: 0px;
+    }
   }
   &__title {
     color: $color-blue-light;

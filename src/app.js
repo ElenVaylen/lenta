@@ -220,7 +220,8 @@ $(document).ready(async function() {
   });
 });
 $(document).ready(function() {
-
+  $('.body').removeClass('loading');
+  
   AOS.init({
     offset: 0,
     duration: 600,

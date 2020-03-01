@@ -1,16 +1,19 @@
 .start {
   position: relative;
   z-index: 1;
+  padding-top: 78px;
+  @media (max-width: $laptop-l) {
+    padding-top: 66px;
+  }
+  @media (max-width: $mobile-xl) {
+    padding-top: 58px;
+  }
   &__wrap {
     position: relative;
     background-image: url('../images/main-bg.jpg');
     background-repeat: no-repeat;
     background-position: top center;
-    margin-top: 78px;
     background-size: cover;
-    @media (max-width: $laptop-l) {
-      margin-top: 66px;
-    }
     @media (max-width: $tablet) {
       background-position: 74% 0%;
       background-size: 1024px auto;
@@ -18,7 +21,6 @@
     @media (max-width: $mobile-xl) {
       background-position: 69% 0%;
       background-size: 890px auto;
-      margin-top: 58px;
     }
     @media (max-width: $mobile-m) {
       background-image: url('../images/main-bg-2.jpg');

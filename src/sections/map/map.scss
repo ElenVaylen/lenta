@@ -73,5 +73,11 @@
     height: 560px;
     position: relative;
     z-index: 1;
+    @media (max-width: $tablet) {
+      height: 460px;
+    }
+    @media (max-width: $mobile-xl) {
+      height: 360px;
+    }
   }
 }
