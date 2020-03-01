@@ -139,14 +139,46 @@ $(document).ready(async function() {
   }
   console.log(cities)
   let modalCity = $('.map-modal__list');
-  cities.map(item => {
-    modalCity.append(`<div class="map-modal__item">
-    <a class="map-modal__link" href="" id="${item.id}" data-lat="${item.lat}" data-long="${item.long}" 
-    data-mediumStoreConcentration="${item.mediumStoreConcentration}" 
-    data-highStoreConcentration="${item.highStoreConcentration}">
-    ${item.name}</a>
-    </div>`);
-  });
+  let itemsInCol = cities.length % 3;
+  let baseItemsCol = cities.length / 3;
+  let lastCol = cities.length / 3;
+  if (itemsInCol !== 0) {
+    lastCol = cities.length - baseItemsCol * 2;
+  }
+  for (let i = 1; i <= 3; i++) {
+    modalCity.append(`<div class='map-modal__col map-modal__col${i}'></div>`);
+    let colCityes = cities.slice(baseItemsCol * (i - 1), baseItemsCol * i)
+    if (i === 3) {
+      colCityes = cities.slice(baseItemsCol * (i - 1), lastCol * i)
+    }
+  
+    colCityes.map(item => {
+      $(`.map-modal__col${i}`).append(`<div class="map-modal__item">
+      <a class="map-modal__link" href="" id="${item.id}" data-lat="${item.lat}" data-long="${item.long}" 
+      data-mediumStoreConcentration="${item.mediumStoreConcentration}" 
+      data-highStoreConcentration="${item.highStoreConcentration}">
+      ${item.name}</a>
+      </div>`)});
+  }
+  let letters = []
+  const reservedCities = [
+    'spb',
+    'msk',
+    'lobl',
+    'mobl'
+  ]
+  let letter = (letter) => {
+    return (`<span class='map-modal__letter'>${letter}</span>`)
+  }
+  cities.forEach(city => {
+    if (letters.indexOf(city.name[0]) === -1 && reservedCities.indexOf(city.id) === -1) {
+      $(`.map-modal__link#${city.id}`).prepend(letter(city.name[0].toUpperCase()))
+      letters.push(city.name[0])
+    }
+  })
+  $(`.map-modal__link#spb`).prepend(letter('С'));
+  $(`.map-modal__link#msk`).prepend(letter('М'));
+
   const res = await loadStores('spb');
   console.log(res)
   $(".map-modal__link").on("click", function (event) {
