@@ -3,7 +3,9 @@ window.$ = window.jQuery = $;
 import 'slick-carousel';
 import AOS from 'aos';
 import cities from './json/cities.json';
-import defaultMap from './json/map.json'
+import spb from './json/spb.json';
+import lobl from './json/lobl.json';
+import mobl from './json/mobl.json';
 
 let myMap;
 let stores;
@@ -101,10 +103,12 @@ let getCities = async () => {
     }
   } catch (error) {
     console.error('Ошибка:', error);
+    return cities;
   }
 }
 
 async function loadStores(cityId) {
+  try {
     const response = await fetch(`http://localhost:8010/api/v1/cities/${cityId}/stores`, {
       headers: {
         'Access-Control-Allow-Origin': '*'
@@ -113,6 +117,21 @@ async function loadStores(cityId) {
     if (response.ok) {
       return response.json()
     }
+  } catch(error) {
+    console.error('Ошибка:', error);
+    let id = spb;
+    switch(cityId) {
+      case 'msk':
+        id = msk;
+      case 'lobl':
+        id = lobl;
+      case 'mobl':
+        id = mobl;
+        break;
+      default:
+    }
+    return id;
+  }
 }
 $(document).ready(async function() {
   // В случае, если мы хотим получать города через АПИ
@@ -120,11 +139,11 @@ $(document).ready(async function() {
   const currentCity = JSON.parse(localStorage.getItem('lenta_current_city'));
   if (currentCity) {
     stores = await loadStores(currentCity.id)
-    let text = currentCity.name;
+    let text  = currentCity.name;
     $('.choise-city').text(text);
     ymaps.ready(() => init(stores))
   } else {
-    stores = defaultMap;
+    stores = spb;
     $('.body').addClass('map-modal__open');
   }
   let modalCity = $('.map-modal__list');
@@ -146,7 +165,7 @@ $(document).ready(async function() {
       <a class="map-modal__link" href="" id="${item.id}" data-lat="${item.lat}" data-long="${item.long}" 
       data-mediumStoreConcentration="${item.mediumStoreConcentration}" 
       data-highStoreConcentration="${item.highStoreConcentration}">
-      ${item.name}</a>
+      <span class='map-modal__link-name'>${item.name}</span></a>
       </div>`)});
   }
   let letters = []
@@ -174,7 +193,7 @@ $(document).ready(async function() {
     event.preventDefault();
     const cityID = event.currentTarget.id;
     const cityData = cities.find(city => city.id === cityID);
-    let text = $(this).text();
+    let text = $(this).children('.map-modal__link-name').text();
     myMap && myMap.setCenter([cityData.lat, cityData.long], 10);
     localStorage.setItem('lenta_current_city', JSON.stringify(cityData));
     loadStores(cityID)
