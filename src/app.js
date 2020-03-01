@@ -5,11 +5,13 @@ import AOS from 'aos';
 import cities from './json/cities.json';
 import defaultMap from './json/map.json'
 
-let mapCount = 0;
+let myMap;
+let stores;
+let objectManager
 
 const init = (stores) => {
   const currentCity = JSON.parse(localStorage.getItem('lenta_current_city'))
-  const myMap = new ymaps.Map("map", {
+  myMap = new ymaps.Map("map", {
     // Координаты центра карты.
     // Порядок по умолчнию: «широта, долгота».
     // Чтобы не определять координаты центра карты вручную,
@@ -21,7 +23,7 @@ const init = (stores) => {
     controls: ["zoomControl"]
   });
   myMap.behaviors.disable("scrollZoom");
-  let objectManager = new ymaps.ObjectManager({
+  objectManager = new ymaps.ObjectManager({
     // Чтобы метки начали кластеризоваться, выставляем опцию.
     clusterize: false,
     // ObjectManager принимает те же опции, что и кластеризатор.
@@ -36,19 +38,7 @@ const init = (stores) => {
     // размеры картинки
     iconImageOffset: [-27, -63] // смещение картинки
   });
-  const points = stores.map(store => ({
-    type: 'Feature',
-    id: store.id,
-    point: store.name,
-    pointType: store.type,
-    geometry: {
-      type: "Point",
-      coordinates: [store.lat, store.long]
-    },
-    properties: {
-      balloonContent: '<div class="balloncontent"><div class="balloncontentcapt cond">' + store.name + "</div></div>"
-    }
-  }))
+  const points = getStores(stores)
   objectManager.add({
     type: "FeatureCollection",
     features: points
@@ -74,26 +64,27 @@ const init = (stores) => {
       return false;
     }
   });
-};
+}
+
+const getStores = function getStores(points) {
+  return points.map(store => ({
+    type: 'Feature',
+    id: store.id,
+    point: store.name,
+    pointType: store.type,
+    geometry: {
+      type: "Point",
+      coordinates: [store.lat, store.long]
+    },
+    properties: {
+      balloonContent: '<div class="balloncontent"><div class="balloncontentcapt cond">' + store.name + "</div></div>"
+    }
+  }))
+}
 
 const filterItems = function filterItems(point) {
   return point.pointType == this;
 }
-
-let addMarker = function addMarker(point, type) {
-  let coord1 = point.latitude;
-  let coord2 = point.longitude;
-  return {
-    type: "Feature",
-    id: mapCount++,
-    point: point.name,
-    pointType: type,
-    geometry: {
-      type: "Point",
-      coordinates: [coord1, coord2]
-    },
-  };
-};
 
 let getCities = async () => {
   const url = 'http://localhost:8010/api/v1/cities';
@@ -105,7 +96,6 @@ let getCities = async () => {
       },
       credentials: 'same-origin'
     })
-    console.log(response);
     if (response.ok) {
       return response.json();
     }
@@ -127,17 +117,16 @@ async function loadStores(cityId) {
 $(document).ready(async function() {
   // В случае, если мы хотим получать города через АПИ
   // const cities = await getCities();
-  let stores;
   const currentCity = JSON.parse(localStorage.getItem('lenta_current_city'));
   if (currentCity) {
     stores = await loadStores(currentCity.id)
     let text = currentCity.name;
     $('.choise-city').text(text);
+    ymaps.ready(() => init(stores))
   } else {
     stores = defaultMap;
     $('.body').addClass('map-modal__open');
   }
-  console.log(cities)
   let modalCity = $('.map-modal__list');
   let itemsInCol = cities.length % 3;
   let baseItemsCol = cities.length / 3;
@@ -152,7 +141,7 @@ $(document).ready(async function() {
       colCityes = cities.slice(baseItemsCol * (i - 1), lastCol * i)
     }
   
-    colCityes.map(item => {
+    colCityes.forEach(item => {
       $(`.map-modal__col${i}`).append(`<div class="map-modal__item">
       <a class="map-modal__link" href="" id="${item.id}" data-lat="${item.lat}" data-long="${item.long}" 
       data-mediumStoreConcentration="${item.mediumStoreConcentration}" 
@@ -180,24 +169,36 @@ $(document).ready(async function() {
   $(`.map-modal__link#msk`).prepend(letter('М'));
 
   const res = await loadStores('spb');
-  console.log(res)
+
   $(".map-modal__link").on("click", function (event) {
     event.preventDefault();
-
-    let text = $(this).text();
     const cityID = event.currentTarget.id;
-
-    stores = loadStores(cityID);
+    const cityData = cities.find(city => city.id === cityID);
+    let text = $(this).text();
+    myMap && myMap.setCenter([cityData.lat, cityData.long], 10);
+    localStorage.setItem('lenta_current_city', JSON.stringify(cityData));
+    loadStores(cityID)
+        .then(stores => {
+          const points = getStores(stores)
+          if (myMap) {
+            objectManager.add({
+              type: "FeatureCollection",
+              features: points
+            })
+            myMap.geoObjects.add(objectManager)
+          } else {
+            ymaps.ready(() => init(stores))
+          }
+        })
     $('.body').removeClass('map-modal__open');
     $('.choise-city').text(text);
-    const cityData = cities.find(city => city.id = cityID);
+
     localStorage.setItem('lenta_current_city', JSON.stringify(cityData));
   });
   $('.choise-city').click(function(event){
     event.preventDefault();
     $('.body').addClass('map-modal__open');
   });
-  ymaps.ready(() => init(stores))
 });
 $(document).ready(function() {
 
