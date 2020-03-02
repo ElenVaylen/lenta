@@ -1,5 +1,5 @@
 mixin link(link_title, link)
-  a(href=link).recipe-detail__link.wow.fadeInRight(data-wow-duration="1s" data-wow-delay="0.2s")= link_title
+  a(href=`./docs/${link}` target='_blank').recipe-detail__link.wow.fadeInRight(data-wow-duration="1s" data-wow-delay="0.2s")= link_title
 
 mixin title(title, text)
   h2.recipe-info__title.wow.fadeIn(data-wow-duration="1s" data-wow-delay="0.2s")= title
