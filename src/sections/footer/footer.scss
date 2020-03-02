@@ -75,7 +75,10 @@
       order: 2;
     }
     p {
-      margin: 0;
+      margin: 0 0 5px 0;
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
   }
   &__phone {
