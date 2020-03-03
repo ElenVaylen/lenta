@@ -378,10 +378,6 @@
     .recipe-detail__components & {
       @media (max-width: $laptop-xs) {
         width: 100%;
-        margin-bottom: 15px;
-        &:last-child {
-          margin-bottom: 0;
-        }
       }
     }
     &-subtitle {
@@ -395,8 +391,11 @@
         margin: 0 0 30px 0;
       }
       @media (max-width: $laptop-xs) {
-        margin: 0 0 15px 0;
+        margin: 15px 0 15px 0;
         font-size: $font-normal-xs;
+        .recipe-detail__col1 & {
+          margin-top: 0;
+        }
       }
       @media (max-width: $tablet) {
         font-size: $font-normal-t;

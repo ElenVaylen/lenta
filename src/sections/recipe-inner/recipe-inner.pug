@@ -67,7 +67,7 @@ section.recipe-inner#recipe-inner
         h3.recipe-detail__title.wow.fadeInLeft(data-wow-duration="1s" data-wow-delay="0.2s") Что понадобится
       .recipe-detail__grid.recipe-detail__components
         +link('Распечатать рецепт', printRecipeLink)
-        .recipe-detail__col
+        .recipe-detail__col.recipe-detail__col1
           +subtitle(componentsTitle1)
           each val in components1
             +recipe-detail__col-row(val.name, val.amount)

@@ -128,9 +128,7 @@
     opacity: 1;
   }
   &__container {
-    margin: auto;
-    width: 100%;
-    max-width: 1000px;
+    width: 1000px;
     background: #fff;
     position: relative;
     z-index: 1200;
@@ -138,15 +136,15 @@
     box-shadow: 0 0 1.5px #111;
     padding: 50px;
     @media (max-width: $laptop-xs) {
-      max-width: 800px;
+      width: 800px;
       padding: 35px;
     }
     @media (max-width: $tablet) {
-      max-width: 600px;
+      width: 600px;
       padding: 25px;
     }
     @media (max-width: $mobile-l) {
-      max-width: 300px;
+      width: 300px;
       padding: 25px 40px;
     }
   }
