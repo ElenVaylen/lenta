@@ -39,7 +39,7 @@
   }
   svg {
     @media (max-width: $laptop-m) {
-      width: 182px;
+      width: 165px;
       height: 46px;
     }
     @media (max-width: $mobile-xl) {
@@ -132,6 +132,9 @@
     letter-spacing: 2px;
     @media (max-width: $laptop-l) {
       margin: 0 16px;
+    }
+    @media (max-width: $laptop-m) {
+      margin: 0 14px;
     }
     @media (max-width: $laptop-xs) {
       margin: 0 0 15px 0;

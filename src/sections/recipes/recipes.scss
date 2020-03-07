@@ -3,17 +3,20 @@
   background-image: url('../images/pattern.jpg');
   background-position: 0 0;
   position: relative;
-  padding-top: 265px;
+  // padding-top: 265px;
+  padding-top: 90px;
   padding-bottom: 90px;
   @media (max-width: $laptop-l) {
-    padding-top: 220px;
+    // padding-top: 220px;
+    padding-top: 70px
   }
   @media (max-width: $tablet) {
-    padding-top: 150px;
+    // padding-top: 150px;
+    padding-top: 60px;
     padding-bottom: 70px;
   }
   @media (max-width: $mobile-xl) {
-    padding-top: 105px;
+    // padding-top: 105px;
     padding-bottom: 110px;
   }
   &:before {
