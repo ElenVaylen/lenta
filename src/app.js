@@ -102,7 +102,7 @@ const filterItems = function filterItems(point) {
 }
 
 let getCities = async () => {
-  const url = 'http://lenta.com/api/v1/cities';
+  const url = 'https://lenta.com/api/v1/cities';
   try {
     const response = await fetch(url, {
       method: 'GET',
@@ -122,7 +122,7 @@ let getCities = async () => {
 
 async function loadStores(cityId) {
   try {
-    const response = await fetch(`http://lenta.com/api/v1/cities/${cityId}/stores`, {
+    const response = await fetch(`https://lenta.com/api/v1/cities/${cityId}/stores`, {
       headers: {
         'Access-Control-Allow-Origin': '*'
       }
