@@ -201,6 +201,8 @@
     align-items: center;
     justify-content: center;
     padding: 2px;
+    white-space: normal;
+    text-transform: none;
     @media (max-width: $laptop-l) {
       width: 18px;
       height: 18px;
