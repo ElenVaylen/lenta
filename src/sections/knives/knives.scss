@@ -118,7 +118,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: #fbfcfc;
+        background-image: url(../images/pattern.jpg);
         padding: 10px 15px;
         cursor: pointer;
         @media (max-width: $mobile-xs) {
@@ -126,6 +126,7 @@
         }
         .slick-current & {
           background-color: $color-blue;
+          background-image: none;
         }
       }
       img {
