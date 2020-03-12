@@ -196,23 +196,23 @@
     height: 20px;
     font-size: 18px;
     text-align: center;
-    line-height: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    line-height: 20px;
     @media (max-width: $laptop-l) {
       width: 18px;
       height: 18px;
       font-size: 16px;
+      line-height: 18px;
     }
     @media (max-width: $laptop-xs) {
       width: 16px;
       height: 16px;
       font-size: 14px;
+      line-height: 17px;
     }
     @media (max-width: $tablet) {
       width: 15px;
       height: 15px;
+      line-height: 14px;
       top: 0px;
     }
   }
