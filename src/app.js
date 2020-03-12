@@ -4,8 +4,8 @@ import 'slick-carousel';
 import WOW from 'wow.js';
 import cities from './json/cities.json';
 import spb from './json/spb.json';
-import lobl from './json/lobl.json';
-import mobl from './json/mobl.json';
+import storCities from './json/storCities';
+
 
 let wow = new WOW(
   {
@@ -26,6 +26,22 @@ let objectManager
 
 const init = (stores) => {
   const currentCity = JSON.parse(localStorage.getItem('lenta_current_city'))
+  if (currentCity.id === 'kmrv') {
+    currentCity.lat = 55.348426;
+    currentCity.long = 86.087525;
+  }
+  if (currentCity.id === 'lpc') {
+    currentCity.lat = 52.593017;
+    currentCity.long = 39.585834;
+  }
+  if (currentCity.id === 'sml') {
+    currentCity.lat = 54.795179;
+    currentCity.long = 32.055579;
+  }
+  if (currentCity.id === 'tbl') {
+    currentCity.lat = 58.23848;
+    currentCity.long = 68.264774;
+  }
   myMap = new ymaps.Map("map", {
     // Координаты центра карты.
     // Порядок по умолчнию: «широта, долгота».
@@ -34,7 +50,7 @@ const init = (stores) => {
     center: [currentCity.lat, currentCity.long],
     // Уровень масштабирования. Допустимые значения:
     // от 0 (весь мир) до 19.
-    zoom: 10,
+    zoom: 9,
     controls: ["zoomControl"]
   });
   myMap.behaviors.disable("scrollZoom");
@@ -100,58 +116,48 @@ const getStores = function getStores(points) {
 const filterItems = function filterItems(point) {
   return point.pointType == this;
 }
-
-let getCities = async () => {
-  const url = 'https://lenta.com/api/v1/cities';
-  try {
-    const response = await fetch(url, {
-      method: 'GET',
-      headers: {
-        'Access-Control-Allow-Origin':'*'
-      },
-      credentials: 'same-origin'
-    })
-    if (response.ok) {
-      return response.json();
-    }
-  } catch (error) {
-    console.error('Ошибка:', error);
-    return cities;
-  }
+function loadStores(cityId) {
+  let json = storCities[cityId];
+  return json;
 }
-
-async function loadStores(cityId) {
-  try {
-    const response = await fetch(`https://lenta.com/api/v1/cities/${cityId}/stores`, {
-      headers: {
-        'Access-Control-Allow-Origin': '*'
-      }
-    });
-    if (response.ok) {
-      return response.json()
-    }
-  } catch(error) {
-    console.error('Ошибка:', error);
-    let id = spb;
-    switch(cityId) {
-      case 'msk':
-        id = msk;
-      case 'lobl':
-        id = lobl;
-      case 'mobl':
-        id = mobl;
-        break;
-      default:
-    }
-    return id;
-  }
-}
-$(document).ready(async function() {
+// let getCities = async () => {
+//   const url = 'https://lenta.com/api/v2/cities';
+//   try {
+//     const response = await fetch(url, {
+//       method: 'GET',
+//       headers: {
+//         'Access-Control-Allow-Origin':'*'
+//       },
+//       credentials: 'same-origin'
+//     })
+//     if (response.ok) {
+//       return response.json();
+//     }
+//   } catch (error) {
+//     console.error('Ошибка:', error);
+//   }
+// }
+// async function loadStores(cityId) {
+  // try {
+  //   const response = await fetch(`https://lenta.com/api/v1/cities/${cityId}/stores`, {
+  //     headers: {
+  //       'Access-Control-Allow-Origin': '*'
+  //     }
+  //   });
+  //   if (response.ok) {
+  //     return response.json()
+  //   }
+  // } catch(error) {
+  //   console.error('Ошибка:', error);
+  // }
+// }
+$(document).ready(function() {
   // В случае, если мы хотим получать города через АПИ
   // const cities = await getCities();
   const currentCity = JSON.parse(localStorage.getItem('lenta_current_city'));
   if (currentCity) {
-    stores = await loadStores(currentCity.id)
+    // stores = await loadStores(currentCity.id)
+    stores = loadStores(currentCity.id)
     let text  = currentCity.name;
     $('.choise-city').text(text);
     ymaps.ready(() => init(stores))
@@ -200,28 +206,58 @@ $(document).ready(async function() {
   $(`.map-modal__link#spb`).prepend(letter('С'));
   $(`.map-modal__link#msk`).prepend(letter('М'));
 
-  const res = await loadStores('spb');
+  // const res = await loadStores('spb');
 
   $(".map-modal__link").on("click", function (event) {
+    let storeCity = []
     event.preventDefault();
     const cityID = event.currentTarget.id;
     const cityData = cities.find(city => city.id === cityID);
     let text = $(this).children('.map-modal__link-name').text();
-    myMap && myMap.setCenter([cityData.lat, cityData.long], 10);
+    if (cityData.id === 'kmrv') {
+      cityData.lat = 55.348426;
+      cityData.long = 86.087525;
+    }
+    if (cityData.id === 'lpc') {
+      cityData.lat = 52.593017;
+      cityData.long = 39.585834;
+    }
+    if (cityData.id === 'sml') {
+      cityData.lat = 54.795179;
+      cityData.long = 32.055579;
+    }
+    if (cityData.id === 'tbl') {
+      cityData.lat = 58.23848;
+      cityData.long = 68.264774;
+    }
+    myMap && myMap.setCenter([cityData.lat, cityData.long], 9);
     localStorage.setItem('lenta_current_city', JSON.stringify(cityData));
-    loadStores(cityID)
-        .then(stores => {
-          const points = getStores(stores)
-          if (myMap) {
-            objectManager.add({
-              type: "FeatureCollection",
-              features: points
-            })
-            myMap.geoObjects.add(objectManager)
-          } else {
-            ymaps.ready(() => init(stores))
-          }
+    storeCity = loadStores(cityID)
+    if (storeCity) {
+      const points = getStores(storeCity)
+      if (myMap) {
+        objectManager.add({
+          type: "FeatureCollection",
+          features: points
         })
+        myMap.geoObjects.add(objectManager)
+      } else {
+        ymaps.ready(() => init(storeCity))
+      }
+    }
+    // loadStores(cityID)
+        // .then(stores => {
+        //   const points = getStores(stores)
+        //   if (myMap) {
+        //     objectManager.add({
+        //       type: "FeatureCollection",
+        //       features: points
+        //     })
+        //     myMap.geoObjects.add(objectManager)
+        //   } else {
+        //     ymaps.ready(() => init(stores))
+        //   }
+        // })
     $('.body').removeClass('map-modal__open');
     $('.choise-city').text(text);
 
