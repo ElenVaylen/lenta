@@ -195,7 +195,7 @@ $(document).ready(function() {
     'mobl'
   ]
   let letter = (letter) => {
-    return (`<span class='map-modal__letter'>${letter}</span>`)
+    return (`<span class='map-modal__letter'><span class='map-modal__letter-item'>${letter}</span></span>`)
   }
   cities.forEach(city => {
     if (letters.indexOf(city.name[0]) === -1 && reservedCities.indexOf(city.id) === -1) {
